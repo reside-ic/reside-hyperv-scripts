@@ -40,14 +40,9 @@ and adding it to the install, which is better done scripted, as below.
 We will statically decide what the MAC addresses is for each virtual machine - all
 the MAC addresses will be in the form `00:15:5d:1a:84:xx`. Those existing so far:-
 
-<center>
-
 | Machine    | Cores | RAM | Disk | MAC |
 |------------|-------|-----|------|------
 | vault-vm   |   1   |  4  |  50  |  01 |
-
-</center>
-
 
 ## How to create a new VM with this repo.
 
@@ -59,8 +54,16 @@ and MAC address, and request an IP address. This might take 30 minutes to come
 live, at which point you should be able to ping `new-vm-name.dide.ic.ac.uk` and 
 see an IP address resolved.
 
-* Customise one of the existing scripts, which are in the form `make_new-vm-name.ps1`;
-the start contains the config, which may end up looking like this:-
+* Login to `wpia-reside1.dide.ic.ac.uk` with DIDE details, and run Powershell
+from the desktop icon, which should put you in this folder.
+
+* Customise an existing script - for example:-
+```
+cp make_vault-vm.ps1 make_new-vm-name.ps1
+edit mane_new-vm-name.ps1
+```
+
+Edit the start of the script, which may end up looking like this:-
 ```
 $vmname = "new-vm-name"
 $FQDN = "new-vm-name.dide.ic.ac.uk"
@@ -74,10 +77,9 @@ $rootpassword = "ubuntu"
 $switch = "External Switch"
 ```
 
-* Run the script by running Powershell as administrator (desktop shortcut), and
-(for example) `./make_new-vm-name.ps1` - it will take a couple of minutes.
+* Run the script from Powershell with `./make_new-vm-name.ps1` - it will take a couple of minutes.
 
-* Then you should be able to connect with Putty/ssh from any DIDE machine,
+* Then you should be able to connect to the new VM with Putty/ssh from any DIDE machine,
 and login with user `ubuntu`, and whatever password you specificed in the script.
 
 ## Diagnostics / Monitoring with a GUI

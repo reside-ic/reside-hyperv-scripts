@@ -1,6 +1,6 @@
 # reside-hyperv-scripts
 
-These scritps relate so far to `wpia-reside1` - a VM host we will be using
+These scripts relate so far to `wpia-reside1` - a VM host we will be using
 to run lots of VMs.
 
 ## The Host Machine Specs
@@ -41,9 +41,11 @@ We will statically decide what the MAC addresses is for each virtual machine - a
 the MAC addresses will be in the form `00:15:5d:1a:84:xx`. Those existing so far:-
 
 <center>
+
 | Machine    | Cores | RAM | Disk | MAC |
 |------------|-------|-----|------|------
 | vault-vm   |   1   |  4  |  50  |  01 |
+
 </center>
 
 

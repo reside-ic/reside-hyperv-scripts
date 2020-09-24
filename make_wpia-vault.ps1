@@ -1,6 +1,6 @@
 
-$vmname = "vault-vm"
-$FQDN = "vault-vm.dide.ic.ac.uk"
+$vmname = "wpia-vault"
+$FQDN = "wpia-vault.dide.ic.ac.uk"
 $cores = 1
 $max_memory = 4GB
 $start_memory = 1GB

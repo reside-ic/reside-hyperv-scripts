@@ -40,27 +40,34 @@ and adding it to the install, which is better done scripted, as below.
 We will statically decide what the MAC addresses is for each virtual machine - all
 the MAC addresses will be in the form `00:15:5d:1a:84:xx`. Those existing so far:-
 
-| Machine    | Cores | RAM | Disk | MAC |
-|------------|-------|-----|------|------
-| vault-vm   |   1   |  4  |  50  |  01 |
+| Machine      | Cores | RAM | Disk | MAC |
+|--------------|-------|-----|------|------
+| wpia-vault   |   1   |  4  |  50  |  01 |
+| wpia-mint    |   2   | 16  | 500  |  02 |
 
 ## How to create a new VM with this repo
 
 * Choose a unique last pair of digits for the MAC address, decide on the
 specs, and add an entry to the table above.
 
-* If this VM is to be accessible to DIDE, inform Chris of the `new-vm-name`
-and MAC address, and request an IP address. This might take 30 minutes to come 
-live, at which point you should be able to ping `new-vm-name.dide.ic.ac.uk` and 
-see an IP address resolved.
+* If this VM is to be accessible to DIDE, inform Chris of the `wpia-newname`
+and MAC address, and request an IP address. Note that all machines and VMs needed
+to start with `wpia-` for their official name, but we can create friendly aliases
+for those names, which will work for all purposes (ssh, browsing, certs). Ask Chris
+at the same time for an alias to the machine. 
+
+* This might take 30 minutes to come live, at which point you should be able to ping 
+`wpia-newname.dide.ic.ac.uk` (and if any alias you made to it) and see an IP address 
+resolved. If not, talk to Chris before continuing, because probably bad things will
+happen if the new VM doesn't get an IP address.
 
 * Remote Desktop to `wpia-reside1.dide.ic.ac.uk` with DIDE details, and run Powershell
 from the desktop icon, which should put you in this folder.
 
 * Customise an existing script - for example:-
 ```
-cp make_vault-vm.ps1 make_new-vm-name.ps1
-edit make_new-vm-name.ps1
+cp make_wpia-vault.ps1 make_wpia-new.ps1
+edit make_wpia-new.ps1
 ```
 
 Edit the start of the script, which may end up looking like this:-
@@ -72,7 +79,7 @@ $max_memory = 4GB
 $start_memory = 1GB
 $disk_size = 50GB
 $os = "D:\ISOs\ubuntu-20.04-server-cloudimg-amd64.img"
-$mac = "00:15:5d:1a:84:02"
+$mac = "00:15:5d:1a:84:03"
 $rootpassword = "ubuntu"
 $switch = "External Switch"
 ```

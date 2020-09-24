@@ -44,7 +44,7 @@ the MAC addresses will be in the form `00:15:5d:1a:84:xx`. Those existing so far
 |------------|-------|-----|------|------
 | vault-vm   |   1   |  4  |  50  |  01 |
 
-## How to create a new VM with this repo.
+## How to create a new VM with this repo
 
 * Choose a unique last pair of digits for the MAC address, decide on the
 specs, and add an entry to the table above.
@@ -54,7 +54,7 @@ and MAC address, and request an IP address. This might take 30 minutes to come
 live, at which point you should be able to ping `new-vm-name.dide.ic.ac.uk` and 
 see an IP address resolved.
 
-* Login to `wpia-reside1.dide.ic.ac.uk` with DIDE details, and run Powershell
+* Remote Desktop to `wpia-reside1.dide.ic.ac.uk` with DIDE details, and run Powershell
 from the desktop icon, which should put you in this folder.
 
 * Customise an existing script - for example:-

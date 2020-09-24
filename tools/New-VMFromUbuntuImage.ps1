@@ -75,7 +75,7 @@ function Normalize-MacAddress ([string]$value) {
 
 $vmms = gwmi -namespace root\virtualization\v2 Msvm_VirtualSystemManagementService
 $vmmsSettings = gwmi -namespace root\virtualization\v2 Msvm_VirtualSystemManagementServiceSettingData
-md -Path "D:\VMs\$VMName"
+md -Force -Path "D:\VMs\$VMName"
 $vhdxPath = Join-Path $vmmsSettings.DefaultVirtualHardDiskPath "$VMName\base.vhdx"
 $metadataIso = Join-Path $vmmsSettings.DefaultVirtualHardDiskPath "$VMName-metadata.iso"
 

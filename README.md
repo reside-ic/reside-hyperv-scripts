@@ -22,13 +22,14 @@ important vm-specific files or notes be needed, put them in that folder too.
 * This repo will be sitting in `D:\reside-hyperv-scripts`
 * NotePad++ is installed for slightly less painful editing of files. 
 * And the command prompt is rigged up with most of the GNU tools.
-* For disaster/diagnostics, the IPMI for wpia-reside1 is on 13.0.0.220, accessible
+* For disaster/diagnostics, the IPMI for wpia-reside1 is on `13.0.0.220`, accessible
 from wpia-didenas2.
 
 ## Staying Sane in the Command Line
 
 * Windows Command line and Powershell are not too bad once you get used to them.
-* I've also wired most of the standard GNU tools are wired in. (diff, grep, tail, more, cat)
+* I've also wired most of the standard GNU tools are wired in. (`diff`, `grep`, 
+`tail`, `more`, `cat` - etc. Ask me if any are missing that you want.)
 * Also, `edit file.txt` will spawn a NotePad++ editor, which is fairly pleasant.
 * All the Hyper-V functionality can be done through either a GUI, or through scripted
 PowerShell. The exception is the auto-configuration of Ubuntu, which requires building an ISO
@@ -36,12 +37,14 @@ and adding it to the install, which is better done scripted, as below.
 
 ## Current VMs
 
-We will statically decide what the MAC addresses is for each machine - all
-MAC addresses are in the form 00:15:5d:1a:84:xx
+We will statically decide what the MAC addresses is for each virtual machine - all
+the MAC addresses will be in the form `00:15:5d:1a:84:xx`. Those existing so far:-
 
+<center>
 | Machine    | Cores | RAM | Disk | MAC |
 |------------|-------|-----|------|------
 | vault-vm   |   1   |  4  |  50  |  01 |
+</center>
 
 
 ## How to create a new VM with this repo.
@@ -49,16 +52,16 @@ MAC addresses are in the form 00:15:5d:1a:84:xx
 * Choose a unique last pair of digits for the MAC address, decide on the
 specs, and add an entry to the table above.
 
-* If this VM is to be accessible to DIDE, inform Chris of the machine name 
+* If this VM is to be accessible to DIDE, inform Chris of the `new-vm-name`
 and MAC address, and request an IP address. This might take 30 minutes to come 
-live, at which point you should be able to ping machinename.dide.ic.ac.uk and 
+live, at which point you should be able to ping `new-vm-name.dide.ic.ac.uk` and 
 see an IP address resolved.
 
-* Customise one of the existing scripts, which are in the form `make_vmname.ps1`;
-it may end up looking something like this:-
+* Customise one of the existing scripts, which are in the form `make_new-vm-name.ps1`;
+the start contains the config, which may end up looking like this:-
 ```
-$vmname = "newvm"
-$FQDN = "newvm.dide.ic.ac.uk"
+$vmname = "new-vm-name"
+$FQDN = "new-vm-name.dide.ic.ac.uk"
 $cores = 1
 $max_memory = 4GB
 $start_memory = 1GB
@@ -69,8 +72,8 @@ $rootpassword = "ubuntu"
 $switch = "External Switch"
 ```
 
-* Run the script by running Powershell as administrator from the desktop, and
-(for example) `./make_newvmname.ps1` - it will take a couple of minutes.
+* Run the script by running Powershell as administrator (desktop shortcut), and
+(for example) `./make_new-vm-name.ps1` - it will take a couple of minutes.
 
 * Then you should be able to connect with Putty/ssh from any DIDE machine,
 and login with user `ubuntu`, and whatever password you specificed in the script.

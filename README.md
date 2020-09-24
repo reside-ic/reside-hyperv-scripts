@@ -60,7 +60,7 @@ from the desktop icon, which should put you in this folder.
 * Customise an existing script - for example:-
 ```
 cp make_vault-vm.ps1 make_new-vm-name.ps1
-edit mane_new-vm-name.ps1
+edit make_new-vm-name.ps1
 ```
 
 Edit the start of the script, which may end up looking like this:-

@@ -44,6 +44,7 @@ the MAC addresses will be in the form `00:15:5d:1a:84:xx`. Those existing so far
 |--------------|-------|-----|------|------
 | wpia-vault   |   1   |  4  |  50  |  01 |
 | wpia-mint    |   2   | 16  | 500  |  02 |
+| wpia-data    |   2   | 16  | 100  |  03 |
 
 ## How to create a new VM with this repo
 

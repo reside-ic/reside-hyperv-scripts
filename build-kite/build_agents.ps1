@@ -79,7 +79,7 @@ for ($agent = $agents_from; $agent -le $agents_to; $agent++) {
   
   (Get-Content "./Vagrantfile_template") | FOREACH-OBJECT {
     $_ -replace '<MAC>', $mac_address `
-	   -replace '<HOSTNAME>', $host_name
+       -replace '<HOSTNAME>', $host_name
   } | SET-CONTENT "./Vagrantfile"
   
   Remove-Item "./Vagrantfile_template"

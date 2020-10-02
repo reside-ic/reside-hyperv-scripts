@@ -86,7 +86,7 @@ for ($agent = $agents_from; $agent -le $agents_to; $agent++) {
   
   # Bring it up.
   
-  # Start-Process -FilePath "vagrant" -ArgumentList "up"
+  Start-Process -FilePath "vagrant" -ArgumentList "up"
     
   Set-Location ".."
 }

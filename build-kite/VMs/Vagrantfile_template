@@ -1,0 +1,27 @@
+vault_config_file = '../vault_config'
+vault_config = Hash[File.read(vault_config_file).split("\n").
+                      map{|s| s.split('=')}]
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/ubuntu1804"
+  config.vm.provider :hyperv do |hyperv|
+    hyperv.vmname = "<HOSTNAME>"
+	hyperv.mac = "<MAC>"
+	hyperv.cpus = "1"
+	hyperv.maxmemory = "16384"
+	hyperv.memory = "1024"
+	hyperv.auto_start_action = "StartIfRunning"
+	hyperv.auto_stop_action = "Save"
+  end
+  config.vm.hostname = "<HOSTNAME>"
+  config.vm.network "public_network", bridge: "NATSwitch", auto_config: false
+  
+  config.vm.provision "shell", path: "setup-network.sh"
+  config.vm.provision "shell", path: "../../vm_scripts/setup.sh"
+  config.vm.provision "shell", path: "../../vm_scripts/setup-agent.sh"
+  config.vm.provision "shell", path: "../../vm_scripts/setup-docker.sh"
+  config.vm.provision "shell", path: "../../vm_scripts/setup-vault.sh"
+  config.vm.provision "shell", path: "../../vm_scripts/setup-pip.sh"
+  config.vm.provision "shell", path: "../../vm_scripts/start-agent.sh", env: vault_config
+  
+end

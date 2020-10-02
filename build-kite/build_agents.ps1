@@ -1,14 +1,21 @@
 # Currently assume this is run in its own directory.
 
 if ($args.count -eq 0) {
-  write-host "Syntax: ./build_agents <no of agents>"
+  write-host "Syntax: ./build_agents <id> to build a single agent"
+  write-host "    or  ./build_agents <id1> <id2> to build agents id1..id2 inclusive"
   exit 1
 }
 
-$agents = $args[0]
+$agents_from = $args[0]
+$agents_to = $agents_from
 
+if ($args.count -eq 2) {
+  $agents_to = $args[1]
+}
+
+$count_agents = 1 + ($agents_to - $agents_from)
 write-host ""
-write-host "Building $agents agents"
+write-host "Building $count_agents agent(s)"
 write-host ""
 
 $VAULT_ADDR = $env:VAULT_ADDR
@@ -37,7 +44,7 @@ Add-Content -Path "vault_config" -Value "VAULT_AUTH_GITHUB_TOKEN=$VAULT_AUTH_GIT
 # vagrant doesn't seem to support hot-wiring the network settings for hyper-v,
 # so I don't think we can use multi-machine with it. Have to do that loop ourselves. 
 
-for ($agent = 1; $agent -le $agents; $agent++) {
+for ($agent = $agents_from; $agent -le $agents_to; $agent++) {
 
   # Abort if there's a VM already existing with this id...
   
@@ -79,7 +86,7 @@ for ($agent = 1; $agent -le $agents; $agent++) {
   
   # Bring it up.
   
-  Start-Process -FilePath "vagrant" -ArgumentList "up"
+  # Start-Process -FilePath "vagrant" -ArgumentList "up"
     
   Set-Location ".."
 }

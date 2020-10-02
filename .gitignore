@@ -1,0 +1,2 @@
+build-kite/VMs/
+!build-kite/VMs/Vagrantfile_template

@@ -16,7 +16,11 @@ agents = [
   { :hostname => 'reside-bk5', :ip => '14.0.0.6', :gw => '14.0.0.1', :ram => '16384', :mac => "00:15:5d:1a:84:24"}
 ]
 
-agent_data_disk_size = 40 # in GB
+# vagrant doesn't support setting the disk size yet. 
+# defaults seem to be 128Gb, with around 16Gb in use 
+# after installation.
+
+# agent_data_disk_size = 40 # in GB
 
 Vagrant.configure(2) do |config|
   config.vm.box = box

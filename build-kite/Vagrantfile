@@ -26,18 +26,18 @@ Vagrant.configure(2) do |config|
     config.vm.define agent[:hostname] do |agent_config|
       agent_config.vm.provider :hyperv do |hyperv|
         hyperv.mac = agent[:mac]
-		hyperv.vmname = agent[:hostname]
-		hyperv.cpus = 1
-		hyperv.maxmemory = agent[:ram]
-		hyperv.memory = "1024"
-		hyperv.auto_start_action = "StartIfRunning"
-		hyperv.auto_stop_action = "Save"
-	  end
-	  agent_config.vm.hostname = agent[:hostname]
-	  agent_config.vm.provision :shell, path: "./vm_scripts/setup-network.sh",
+        hyperv.vmname = agent[:hostname]
+        hyperv.cpus = 1
+        hyperv.maxmemory = agent[:ram]
+        hyperv.memory = "1024"
+        hyperv.auto_start_action = "StartIfRunning"
+        hyperv.auto_stop_action = "Save"
+      end
+      agent_config.vm.hostname = agent[:hostname]
+      agent_config.vm.provision :shell, path: "./vm_scripts/setup-network.sh",
 		                                  env: {"IP" => agent[:ip], "GW" => agent[:gw]}
     
-	  agent_config.vm.provision :shell, path: "./vm_scripts/setup.sh"
+      agent_config.vm.provision :shell, path: "./vm_scripts/setup.sh"
       agent_config.vm.provision :shell, path: "./vm_scripts/setup-agent.sh"
       agent_config.vm.provision :shell, path: "./vm_scripts/setup-docker.sh"
       agent_config.vm.provision :shell, path: "./vm_scripts/setup-vault.sh"

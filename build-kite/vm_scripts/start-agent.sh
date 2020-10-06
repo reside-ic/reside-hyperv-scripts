@@ -50,5 +50,5 @@ EOF
 chmod +x /etc/cron.daily/docker-cleanup
 
 ## Startup agent
-sudo systemctl enable buildkite-agent && sudo systemctl start buildkite-agent --tags "linux,general"
+sudo systemctl enable buildkite-agent && sudo systemctl start buildkite-agent --tags "ubuntu,general-node"
 

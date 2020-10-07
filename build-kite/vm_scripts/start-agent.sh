@@ -42,6 +42,7 @@ $AS_AGENT git config --global user.name "vimc-robot"
 $AS_AGENT git config --global push.default simple
 
 echo 'export PATH=/var/lib/buildkite-agent/.local/bin:$PATH' | sudo tee -a /etc/buildkite-agent/hooks/environment
+echo 'tags="ubuntu=true,general-node=true"' | sudo tee -a /etc/buildkite-agent/buildkite-agent.cfg
 
 cat <<EOF > /etc/cron.daily/docker-cleanup
 #!/usr/bin/env bash
@@ -52,5 +53,5 @@ EOF
 chmod +x /etc/cron.daily/docker-cleanup
 
 ## Startup agent
-sudo systemctl enable buildkite-agent && sudo systemctl start buildkite-agent --tags "ubuntu,general-node"
+sudo systemctl enable buildkite-agent && sudo systemctl start buildkite-agent
 

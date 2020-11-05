@@ -41,14 +41,26 @@ $AS_AGENT git config --global user.email "rich.fitzjohn+vimc@gmail.com"
 $AS_AGENT git config --global user.name "vimc-robot"
 $AS_AGENT git config --global push.default simple
 
-echo 'export PATH=/var/lib/buildkite-agent/.local/bin:$PATH' | sudo tee -a /etc/buildkite-agent/hooks/environment
+# Add pipeline specific secrets to environment
+HINT_CODECOV=$(vault read -field=token secret/hint/codecov)
+MINT_CODECOV=$(vault read -field=token secret/mint/codecov)
+cat << EOF > /etc/buildkite-agent/hooks/environment
+HINT_CODECOV=$HINT_CODECOV
+MINT_CODECOV=$MINT_CODECOV
+EOF
+cat << 'EOF' >> /etc/buildkite-agent/hooks/environment
+export PATH=/var/lib/buildkite-agent/.local/bin:$PATH
 
-# Add pipeline specific secrets
 if [[ "$BUILDKITE_PIPELINE_SLUG" == "hint" ]]; then
-    CODECOV_TOKEN=$(vault read -field=token secret/hint/codecov)
+    CODECOV_TOKEN=$HINT_CODECOV
 fi
 
-echo 'export CODECOV_TOKEN=$CODECOV_TOKEN' | sudo tee -a /etc/buildkite-agent/hooks/environment
+if [[ "$BUILDKITE_PIPELINE_SLUG" == "mint" ]]; then
+    CODECOV_TOKEN=$MINT_CODECOV
+fi
+
+export CODECOV_TOKEN=$CODECOV_TOKEN
+EOF
 
 TAG_STRING="tags=\"node-type=general,os=ubuntu,vmhost=$VMHOST_NAME\""
 echo $TAG_STRING | sudo tee -a /etc/buildkite-agent/buildkite-agent.cfg

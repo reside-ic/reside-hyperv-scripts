@@ -43,6 +43,13 @@ $AS_AGENT git config --global push.default simple
 
 echo 'export PATH=/var/lib/buildkite-agent/.local/bin:$PATH' | sudo tee -a /etc/buildkite-agent/hooks/environment
 
+# Add pipeline specific secrets
+if [[ "$BUILDKITE_PIPELINE_SLUG" == "hint" ]]; then
+    CODECOV_TOKEN=$(vault read -field=token secret/hint/codecov)
+fi
+
+echo 'export CODECOV_TOKEN=$CODECOV_TOKEN' | sudo tee -a /etc/buildkite-agent/hooks/environment
+
 TAG_STRING="tags=\"node-type=general,os=ubuntu,vmhost=$VMHOST_NAME\""
 echo $TAG_STRING | sudo tee -a /etc/buildkite-agent/buildkite-agent.cfg
 

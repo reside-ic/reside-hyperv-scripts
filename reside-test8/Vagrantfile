@@ -1,0 +1,29 @@
+# -*- mode: ruby -*-
+
+box = "generic/ubuntu1804"
+gateway = "14.0.0.1"
+ram = "65536"
+hostname = "reside-test8"
+ip = "14.0.0.10"
+mac = "00:15:5d:1a:84:04"
+cpus = 8
+
+Vagrant.configure(2) do |config|
+  config.vm.box = box
+  config.vm.network "public_network", bridge: "NATSwitch", auto_config: false
+  config.vm.provider :hyperv do |hyperv|
+    hyperv.mac = mac
+    hyperv.vmname = hostname
+    hyperv.cpus = cpus
+    hyperv.maxmemory = ram
+    hyperv.memory = "1024"
+    hyperv.auto_start_action = "StartIfRunning"
+    hyperv.auto_stop_action = "Save"
+  end
+  config.vm.hostname = hostname
+  config.vm.provision :shell, path: "./vm_scripts/setup-network.sh",
+		                                  env: {"IP" => ip, "GW" => gateway}
+    
+  config.vm.provision :shell, path: "./vm_scripts/setup-docker.sh"
+  config.vm.provision :shell, path: "./vm_scripts/setup.sh"	
+end

@@ -38,18 +38,22 @@ and adding it to the install, which is better done scripted, as below.
 ## Current VMs
 
 We will statically decide what the MAC addresses is for each virtual machine - all
-the MAC addresses will be in the form `00:15:5d:1a:84:xx`. Those existing so far:-
+the MAC addresses will be in the form `00:15:5d:1a:84:xx`. IP address will either be
+local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those existing so far:-
 
-| Machine      | Cores | RAM | Disk | MAC |
-|--------------|-------|-----|------|------
-| wpia-vault   |   1   |  4  |  50  |  01 |
-| wpia-mint    |   2   | 16  | 500  |  02 |
-| wpia-data    |   2   | 16  | 100  |  03 |
+| Machine      | Cores | RAM | Disk | MAC |     IP   |
+|--------------|-------|-----|------|-----|----------|
+| wpia-vault   |   1   |  4  |  50  |  01 |   dide   |
+| wpia-mint    |   2   | 16  | 500  |  02 |   dide   |
+| wpia-data    |   2   | 16  | 100  |  03 |   dide   |
+| build-kite1  |   1   | 16  | 100  |  20 | 14.0.0.2 |
+| build-kite2  |   1   | 16  | 100  |  21 | 14.0.0.3 |
+| build-kite3  |   1   | 16  | 100  |  22 | 14.0.0.4 |
+| build-kite4  |   1   | 16  | 100  |  23 | 14.0.0.5 |
+| build-kite5  |   1   | 16  | 100  |  24 | 14.0.0.6 |
+| reside-test8 |   8   |  64 |  -   |  04 | 14.0.0.8 | 
 
 ## How to create a new VM with this repo
-
-* Choose a unique last pair of digits for the MAC address, decide on the
-specs, and add an entry to the table above.
 
 * If this VM is to be accessible to DIDE, inform Chris of the `wpia-newname`
 and MAC address, and request an IP address. Note that all machines and VMs needed
@@ -65,30 +69,14 @@ happen if the new VM doesn't get an IP address.
 * Remote Desktop to `wpia-reside1.dide.ic.ac.uk` with DIDE details, and run Powershell
 from the desktop icon, which should put you in this folder.
 
-* Customise an existing script - for example:-
-```
-cp make_wpia-vault.ps1 make_wpia-new.ps1
-edit make_wpia-new.ps1
-```
+* We're now using vagrant for creating hyperv VMs. See the `reside-test8` folder 
+for an example. The only disadvantage compared to Powershell is the inability
+to set a maximum disk size, which is probably not critical. The example has
+simple variables for the CPU, RAM, IP, MAC and hostname. 
 
-Edit the start of the script, which may end up looking like this:-
-```
-$vmname = "new-vm-name"
-$FQDN = "new-vm-name.dide.ic.ac.uk"
-$cores = 1
-$max_memory = 4GB
-$start_memory = 1GB
-$disk_size = 50GB
-$os = "D:\ISOs\ubuntu-20.04-server-cloudimg-amd64.img"
-$mac = "00:15:5d:1a:84:03"
-$rootpassword = "ubuntu"
-$switch = "External Switch"
-```
-
-* Run the script from Powershell with `./make_new-vm-name.ps1` - it will take a couple of minutes.
-
-* Then you should be able to connect to the new VM with Putty/ssh from any DIDE machine,
-and login with user `ubuntu`, and whatever password you specificed in the script.
+* Then you should be able to connect to the new VM. For a local non-dide machine, use
+Putty on wpia-reside1 to that IP address; for DIDE machines, any DIDE machine will do.
+Login with `vagrant` / `vagrant`. 
 
 ## Diagnostics / Monitoring with a GUI
 

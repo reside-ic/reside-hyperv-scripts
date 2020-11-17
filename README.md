@@ -46,37 +46,59 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | wpia-vault   |   1   |  4  |  50  |  01 |   dide   |
 | wpia-mint    |   2   | 16  | 500  |  02 |   dide   |
 | wpia-data    |   2   | 16  | 100  |  03 |   dide   |
+| wpia-bots    |   1   |  2  | 100  |  05 |   dide   |
 | build-kite1  |   1   | 16  | 100  |  20 | 14.0.0.2 |
 | build-kite2  |   1   | 16  | 100  |  21 | 14.0.0.3 |
 | build-kite3  |   1   | 16  | 100  |  22 | 14.0.0.4 |
 | build-kite4  |   1   | 16  | 100  |  23 | 14.0.0.5 |
 | build-kite5  |   1   | 16  | 100  |  24 | 14.0.0.6 |
-| reside-test8 |   8   |  64 |  -   |  04 | 14.0.0.8 | 
 
 ## How to create a new VM with this repo
 
-* If this VM is to be accessible to DIDE, inform Chris of the `wpia-newname`
-and MAC address, and request an IP address. Note that all machines and VMs needed
-to start with `wpia-` for their official name, but we can create friendly aliases
-for those names, which will work for all purposes (ssh, browsing, certs). Ask Chris
-at the same time for an alias to the machine. 
+* Note that wpia-vault, wpia-mint and wpia-data were created with a legacy method.
+  We'll let them be, but for new VMs, use the Vagrant methods below.
+  
+### For machines that don't need a DIDE IP address
 
-* This might take 30 minutes to come live, at which point you should be able to ping 
-`wpia-newname.dide.ic.ac.uk` (and if any alias you made to it) and see an IP address 
-resolved. If not, talk to Chris before continuing, because probably bad things will
-happen if the new VM doesn't get an IP address.
+* Skip the next paragraph about contacting Chris, and then copy defaults
+  from the `build-kite` folder instead of bots.
+  
+### For machines that need a DIDE IP address
 
-* Remote Desktop to `wpia-reside1.dide.ic.ac.uk` with DIDE details, and run Powershell
-from the desktop icon, which should put you in this folder.
+* The VM  should be named `wpia-something`. Create a PR on this repo, updating
+  the table above with a MAC address. Contact Chris in IT and ask for an IP address,
+  providing him with the MAC address, the `wpia-something` name, and letting him 
+  know this will be a VM running on wpia-reside1. You may also want to request that
+  he creates an alias for `wpia-something` called just `something`. This may take
+  15 or 30 minutes - wait until you can ping `wpia-something.dide.ic.ac.uk` before
+  continuing.
+  
+* Remote Desktop to `wpia-reside1.dide.ic.ac.uk` with DIDE details; there should be
+  a `Command Prompt` icon on the desktop, which has been made as linux-compatible
+  as possible. You can also use `edit` to fire up `Notepad++` for a reasonably 
+  sane editing experience.
+  
+* Make a new directory for the new machine, copying the defaults from the `bots`
+  folder. (Or if you don't need a DIDE IP address, the `build-kite` folder.
+  
+```
+  D:\reside-hyperv-scripts> md something
+  D:\reside-hyperv-scripts> cd something
+  D:\reside-hyperv-scripts\something> copy ..\bots\Vagrantfile
+          1 file(s) copied.
+  D:\reside-hyperv-scripts\something> md vm_scripts
+  D:\reside-hyperv-scripts\something> copy ..\bots\vm_scripts vm_scripts
+  D:\reside-hyperv-scripts\something> edit Vagrantfile
+```
 
-* We're now using vagrant for creating hyperv VMs. See the `reside-test8` folder 
-for an example. The only disadvantage compared to Powershell is the inability
-to set a maximum disk size, which is probably not critical. The example has
-simple variables for the CPU, RAM, IP, MAC and hostname. 
-
+* Edit the Vagrantfile. The resources required are at the top, and scripts to
+  provision the VM a bit lower.
+  
+* `vagrant up` from that folder. 
+ 
 * Then you should be able to connect to the new VM. For a local non-dide machine, use
-Putty on wpia-reside1 to that IP address; for DIDE machines, any DIDE machine will do.
-Login with `vagrant` / `vagrant`. 
+Putty on wpia-reside1 to the IP address you gave the VM; for DIDE machines, any DIDE 
+machine will do. Login for the first time with `vagrant` / `vagrant`. 
 
 ## Diagnostics / Monitoring with a GUI
 

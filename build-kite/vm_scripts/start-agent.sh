@@ -11,13 +11,6 @@ DOCKER_USERNAME=$(vault read -field=username secret/vimc-robot/dockerhub)
 vault read -field=password secret/vimc-robot/dockerhub | \
   $AS_AGENT docker login -u $DOCKER_USERNAME --password-stdin
 
-## Once we retire the registry this section goes away
-VIMC_DOCKER_URL=docker.montagu.dide.ic.ac.uk:5000
-VIMC_DOCKER_USERNAME=vimc
-VIMC_DOCKER_PASSWORD=$(vault read -field=password /secret/vimc/registry/vimc)
-echo $VIMC_DOCKER_PASSWORD | \
-    $AS_AGENT docker login -u $VIMC_DOCKER_USERNAME --password-stdin $VIMC_DOCKER_URL
-
 ## Read buildkite agent token from vault and write into cfg
 BUILDKITE_AGENT_TOKEN=$(vault read -field=token secret/buildkite/agent)
 sudo sed -i "s/xxx/${BUILDKITE_AGENT_TOKEN}/g" /etc/buildkite-agent/buildkite-agent.cfg

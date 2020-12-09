@@ -15,7 +15,10 @@ agents = [
   { :hostname => 'reside-bk2', :ip => '14.0.0.3', :mac => "00:15:5d:1a:84:21"},
   { :hostname => 'reside-bk3', :ip => '14.0.0.4', :mac => "00:15:5d:1a:84:22"},
   { :hostname => 'reside-bk4', :ip => '14.0.0.5', :mac => "00:15:5d:1a:84:23"},
-  { :hostname => 'reside-bk5', :ip => '14.0.0.6', :mac => "00:15:5d:1a:84:24"}
+  { :hostname => 'reside-bk5', :ip => '14.0.0.6', :mac => "00:15:5d:1a:84:24"},
+  { :hostname => 'reside-bk6', :ip => '14.0.0.7', :mac => "00:15:5d:1a:84:25"},
+  { :hostname => 'reside-bk7', :ip => '14.0.0.8', :mac => "00:15:5d:1a:84:26"},
+  { :hostname => 'reside-bk8', :ip => '14.0.0.9', :mac => "00:15:5d:1a:84:27"}
 ]
 
 Vagrant.configure(2) do |config|

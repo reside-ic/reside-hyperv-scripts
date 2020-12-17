@@ -43,6 +43,7 @@ MINT_CODECOV=$(vault read -field=token secret/mint/codecov)
 ORDERLYWEB_CODECOV=$(vault read -field=token secret/vimc/orderly-web/codecov)
 HINTR_CODECOV=$(vault read -field=token secret/hintr/codecov)
 cat << EOF > /etc/buildkite-agent/hooks/environment
+HINT_WEBHOOK=$HINT_WEBHOOK
 HINT_CODECOV=$HINT_CODECOV
 MINT_CODECOV=$MINT_CODECOV
 ORDERLYWEB_CODECOV=$ORDERLYWEB_CODECOV

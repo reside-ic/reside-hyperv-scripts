@@ -34,6 +34,9 @@ $AS_AGENT git config --global user.email "rich.fitzjohn+vimc@gmail.com"
 $AS_AGENT git config --global user.name "vimc-robot"
 $AS_AGENT git config --global push.default simple
 
+# Add webhook URLs to environment
+HINT_WEBHOOK=$(vault read -field=url secret/hint/flow-webhook)
+
 # Add pipeline specific secrets to environment
 HINT_CODECOV=$(vault read -field=token secret/hint/codecov)
 MINT_CODECOV=$(vault read -field=token secret/mint/codecov)

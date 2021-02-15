@@ -16,6 +16,8 @@ to run lots of VMs.
 
 * The system runs Windows Server 2019 with Hyper-V. The `C:` is for Operating System
 only, whereas `D:` is the large NVMe space. 
+* Along with installing Vagrant for Windows on the Server, you should also run
+  `vagrant plugin install vagrant-disksize` to enable sizing of a VM's storage.
 * ISOs for the VM operating systems are in `D:\ISOs`
 * Disks for the VMs will be in the form `D:\VMs\vmname\base.vhdx` - should any other
 important vm-specific files or notes be needed, put them in that folder too.
@@ -48,14 +50,15 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | wpia-data     |   2   | 16  | 100  |  03 |   dide   |
 | wpia-bots     |   1   |  2  | 100  |  05 |   dide   |
 | wpia-mint-dev |   2   | 16  | 500  |  06 |   dide   |
+| wpia-ncov-dev |   2   | 64  | 1000 |  07 |   dide   |
 | build-kite1   |   1   | 16  | 100  |  20 | 14.0.0.2 |
 | build-kite2   |   1   | 16  | 100  |  21 | 14.0.0.3 |
 | build-kite3   |   1   | 16  | 100  |  22 | 14.0.0.4 |
 | build-kite4   |   1   | 16  | 100  |  23 | 14.0.0.5 |
 | build-kite5   |   1   | 16  | 100  |  24 | 14.0.0.6 |
-| build-kite6   |   1   | 16  | 100  |  24 | 14.0.0.7 |
-| build-kite7   |   1   | 16  | 100  |  24 | 14.0.0.8 |
-| build-kite8   |   1   | 16  | 100  |  24 | 14.0.0.9 |
+| build-kite6   |   1   | 16  | 100  |  25 | 14.0.0.7 |
+| build-kite7   |   1   | 16  | 100  |  26 | 14.0.0.8 |
+| build-kite8   |   1   | 16  | 100  |  27 | 14.0.0.9 |
 
 ## How to create a new VM with this repo
 

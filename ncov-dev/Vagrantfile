@@ -8,7 +8,6 @@ cpus = 2
 
 Vagrant.configure(2) do |config|
   config.vm.box = box
-  config.disksize.size = '1024GB'
   config.vm.network "public_network", bridge: "External Switch", auto_config: true
   config.vm.provider :hyperv do |hyperv|
     hyperv.mac = mac

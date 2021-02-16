@@ -16,8 +16,6 @@ to run lots of VMs.
 
 * The system runs Windows Server 2019 with Hyper-V. The `C:` is for Operating System
 only, whereas `D:` is the large NVMe space. 
-* Along with installing Vagrant for Windows on the Server, you should also run
-  `vagrant plugin install vagrant-disksize` to enable sizing of a VM's storage.
 * ISOs for the VM operating systems are in `D:\ISOs`
 * Disks for the VMs will be in the form `D:\VMs\vmname\base.vhdx` - should any other
 important vm-specific files or notes be needed, put them in that folder too.
@@ -106,6 +104,14 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 * Then you should be able to connect to the new VM. For a local non-dide machine, use
 Putty on wpia-reside1 to the IP address you gave the VM; for DIDE machines, any DIDE 
 machine will do. Login for the first time with `vagrant` / `vagrant`. 
+
+## About diskspace
+
+* It does not currently seem possible to specify the default disk size with
+Vagrant. (The vagrant-disksize plugin disables the hyperv provider and requires
+VirtualBox, and the experimental environment variable with the disk size settings
+doesn't make any difference...) Therefore, for now, build the VM, and set the disk
+size in the configuration in the Hyper-V Manager.
 
 ## Diagnostics / Monitoring with a GUI
 

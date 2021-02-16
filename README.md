@@ -105,13 +105,13 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 Putty on wpia-reside1 to the IP address you gave the VM; for DIDE machines, any DIDE 
 machine will do. Login for the first time with `vagrant` / `vagrant`. 
 
-## About diskspace
+## Disk sizes
 
-* It does not currently seem possible to specify the default disk size with
-Vagrant. (The vagrant-disksize plugin disables the hyperv provider and requires
-VirtualBox, and the experimental environment variable with the disk size settings
-doesn't make any difference...) Therefore, for now, build the VM, and set the disk
-size in the configuration in the Hyper-V Manager.
+* Vagrant does not seem able to manage default disk size with Hyper-V.
+* After building a VM, power it off, and use Hyper-V manager to edit
+the disk size.
+* Restart the VM, and... `sudo growpart /dev/sda 3` followed by
+`sudo resize2fs /dev/sda3` will sort it out.
 
 ## Diagnostics / Monitoring with a GUI
 

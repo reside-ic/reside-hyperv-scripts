@@ -19,10 +19,8 @@ Vagrant.configure(2) do |config|
     hyperv.auto_stop_action = "Save"
   end
   config.vm.hostname = hostname
-  
   config.vm.provision :shell, path: "../common/setup.sh",
 		                                  env: {"hostname" => hostname}
-  
   config.vm.provision :shell, path: "../common/setup-docker.sh"
   
 end

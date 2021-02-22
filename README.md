@@ -48,14 +48,15 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | wpia-data     |   2   | 16  | 100  |  03 |   dide   |
 | wpia-bots     |   1   |  2  | 100  |  05 |   dide   |
 | wpia-mint-dev |   2   | 16  | 500  |  06 |   dide   |
+| wpia-ncov-dev |   2   | 64  | 1000 |  07 |   dide   |
 | build-kite1   |   1   | 16  | 100  |  20 | 14.0.0.2 |
 | build-kite2   |   1   | 16  | 100  |  21 | 14.0.0.3 |
 | build-kite3   |   1   | 16  | 100  |  22 | 14.0.0.4 |
 | build-kite4   |   1   | 16  | 100  |  23 | 14.0.0.5 |
 | build-kite5   |   1   | 16  | 100  |  24 | 14.0.0.6 |
-| build-kite6   |   1   | 16  | 100  |  24 | 14.0.0.7 |
-| build-kite7   |   1   | 16  | 100  |  24 | 14.0.0.8 |
-| build-kite8   |   1   | 16  | 100  |  24 | 14.0.0.9 |
+| build-kite6   |   1   | 16  | 100  |  25 | 14.0.0.7 |
+| build-kite7   |   1   | 16  | 100  |  26 | 14.0.0.8 |
+| build-kite8   |   1   | 16  | 100  |  27 | 14.0.0.9 |
 
 ## How to create a new VM with this repo
 
@@ -103,6 +104,14 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 * Then you should be able to connect to the new VM. For a local non-dide machine, use
 Putty on wpia-reside1 to the IP address you gave the VM; for DIDE machines, any DIDE 
 machine will do. Login for the first time with `vagrant` / `vagrant`. 
+
+## Disk sizes
+
+* Vagrant does not seem able to manage default disk size with Hyper-V.
+* After building a VM, power it off, and use Hyper-V manager to edit
+the disk size.
+* Restart the VM, and... `sudo growpart /dev/sda 3` followed by
+`sudo resize2fs /dev/sda3` will sort it out.
 
 ## Diagnostics / Monitoring with a GUI
 

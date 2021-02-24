@@ -67,6 +67,11 @@ fi
 export CODECOV_TOKEN=$CODECOV_TOKEN
 EOF
 
+# Clean-up any remaining Docker containers after each job
+cat <<EOF >>/etc/buildkite-agent/hooks/pre-exit
+docker rm --force $(docker ps --quiet)
+EOF
+
 TAG_STRING="tags=\"node-type=general,os=ubuntu,vmhost=$VMHOST_NAME\""
 echo $TAG_STRING | sudo tee -a /etc/buildkite-agent/buildkite-agent.cfg
 

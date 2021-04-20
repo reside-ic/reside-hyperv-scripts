@@ -39,11 +39,13 @@ HINT_CODECOV=$(vault read -field=token secret/hint/codecov)
 MINT_CODECOV=$(vault read -field=token secret/mint/codecov)
 ORDERLYWEB_CODECOV=$(vault read -field=token secret/vimc/orderly-web/codecov)
 HINTR_CODECOV=$(vault read -field=token secret/hintr/codecov)
+COMET_CODECOV=$(vault read -field=token secret/comet/codecov)
 cat << EOF > /etc/buildkite-agent/hooks/environment
 HINT_CODECOV=$HINT_CODECOV
 MINT_CODECOV=$MINT_CODECOV
 ORDERLYWEB_CODECOV=$ORDERLYWEB_CODECOV
 HINTR_CODECOV=$HINTR_CODECOV
+COMET_CODECOV=$COMET_CODECOV
 EOF
 cat << 'EOF' >> /etc/buildkite-agent/hooks/environment
 export PATH=/var/lib/buildkite-agent/.local/bin:$PATH
@@ -62,6 +64,10 @@ fi
 
 if [[ "$BUILDKITE_PIPELINE_SLUG" == "hintr" ]]; then
     CODECOV_TOKEN=$HINTR_CODECOV
+fi
+
+if [[ "$BUILDKITE_PIPELINE_SLUG" == "comet" ]]; then
+    CODECOV_TOKEN=$COMET_CODECOV
 fi
 
 export CODECOV_TOKEN=$CODECOV_TOKEN

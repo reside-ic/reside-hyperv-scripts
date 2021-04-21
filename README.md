@@ -110,7 +110,9 @@ machine will do. Login for the first time with `vagrant` / `vagrant`.
 
 * Vagrant does not seem able to manage default disk size with Hyper-V.
 * After building a VM, power it off, and use Hyper-V manager to edit
-the disk size.
+the disk size:- Right click on the VM, Settings, find IDE Controller 0
+and Hard-Drive. Edit button, Next, Expand, Next, choose the size.
+Next. Finish!
 * Restart the VM, and... `sudo growpart /dev/sda 3` followed by
 `sudo resize2fs /dev/sda3` will sort it out.
 

@@ -41,22 +41,23 @@ We will statically decide what the MAC addresses is for each virtual machine - a
 the MAC addresses will be in the form `00:15:5d:1a:84:xx`. IP address will either be
 local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those existing so far:-
 
-| Machine       | Cores | RAM | Disk | MAC |     IP   |
-|---------------|-------|-----|------|-----|----------|
-| wpia-vault    |   1   |  4  |  50  |  01 |   dide   |
-| wpia-mint     |   2   | 16  | 500  |  02 |   dide   |
-| wpia-data     |   2   | 16  | 100  |  03 |   dide   |
-| wpia-bots     |   1   |  2  | 100  |  05 |   dide   |
-| wpia-mint-dev |   2   | 16  | 500  |  06 |   dide   |
-| wpia-ncov-dev |   2   | 64  | 1000 |  07 |   dide   |
-| build-kite1   |   1   | 16  | 100  |  20 | 14.0.0.2 |
-| build-kite2   |   1   | 16  | 100  |  21 | 14.0.0.3 |
-| build-kite3   |   1   | 16  | 100  |  22 | 14.0.0.4 |
-| build-kite4   |   1   | 16  | 100  |  23 | 14.0.0.5 |
-| build-kite5   |   1   | 16  | 100  |  24 | 14.0.0.6 |
-| build-kite6   |   1   | 16  | 100  |  25 | 14.0.0.7 |
-| build-kite7   |   1   | 16  | 100  |  26 | 14.0.0.8 |
-| build-kite8   |   1   | 16  | 100  |  27 | 14.0.0.9 |
+| Machine                | Cores | RAM | Disk | MAC |     IP   |
+|------------------------|-------|-----|------|-----|----------|
+| wpia-vault             |   1   |  4  |  50  |  01 |   dide   |
+| wpia-mint              |   2   | 16  | 500  |  02 |   dide   |
+| wpia-data              |   2   | 16  | 100  |  03 |   dide   |
+| wpia-bots              |   1   |  2  | 100  |  05 |   dide   |
+| wpia-mint-dev          |   2   | 16  | 500  |  06 |   dide   |
+| wpia-ncov-dev          |   2   | 64  | 1000 |  07 |   dide   |
+| wpia-covid19-forecasts |   6   | 32  | 1000 |  08 |   dide   |
+| build-kite1            |   1   | 16  | 100  |  20 | 14.0.0.2 |
+| build-kite2            |   1   | 16  | 100  |  21 | 14.0.0.3 |
+| build-kite3            |   1   | 16  | 100  |  22 | 14.0.0.4 |
+| build-kite4            |   1   | 16  | 100  |  23 | 14.0.0.5 |
+| build-kite5            |   1   | 16  | 100  |  24 | 14.0.0.6 |
+| build-kite6            |   1   | 16  | 100  |  25 | 14.0.0.7 |
+| build-kite7            |   1   | 16  | 100  |  26 | 14.0.0.8 |
+| build-kite8            |   1   | 16  | 100  |  27 | 14.0.0.9 |
 
 ## How to create a new VM with this repo
 
@@ -109,7 +110,9 @@ machine will do. Login for the first time with `vagrant` / `vagrant`.
 
 * Vagrant does not seem able to manage default disk size with Hyper-V.
 * After building a VM, power it off, and use Hyper-V manager to edit
-the disk size.
+the disk size:- Right click on the VM, Settings, find IDE Controller 0
+and Hard-Drive. Edit button, Next, Expand, Next, choose the size.
+Next. Finish!
 * Restart the VM, and... `sudo growpart /dev/sda 3` followed by
 `sudo resize2fs /dev/sda3` will sort it out.
 

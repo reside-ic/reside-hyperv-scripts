@@ -1,6 +1,6 @@
 # -*- mode: ruby -*-
 
-box = "generic/ubuntu2004"
+box = "generic/ubuntu1804"
 ram = "8192"
 hostname = "wpia-comet"
 mac = "00:15:5d:1a:84:09"

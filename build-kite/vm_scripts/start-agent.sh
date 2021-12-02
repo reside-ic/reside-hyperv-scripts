@@ -40,12 +40,14 @@ MINT_CODECOV=$(vault read -field=token secret/mint/codecov)
 ORDERLYWEB_CODECOV=$(vault read -field=token secret/vimc/orderly-web/codecov)
 HINTR_CODECOV=$(vault read -field=token secret/hintr/codecov)
 COMET_CODECOV=$(vault read -field=token secret/comet/codecov)
+YOUTRACK_TOKEN=$(vault read -field=value secret/vimc-robot/youtrack-task-queue-token)
 cat << EOF > /etc/buildkite-agent/hooks/environment
 HINT_CODECOV=$HINT_CODECOV
 MINT_CODECOV=$MINT_CODECOV
 ORDERLYWEB_CODECOV=$ORDERLYWEB_CODECOV
 HINTR_CODECOV=$HINTR_CODECOV
 COMET_CODECOV=$COMET_CODECOV
+export YOUTRACK_TOKEN=$YOUTRACK_TOKEN
 EOF
 cat << 'EOF' >> /etc/buildkite-agent/hooks/environment
 export PATH=/var/lib/buildkite-agent/.local/bin:$PATH

@@ -48,7 +48,7 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | wpia-data              |   2   | 16  | 100  |  03 |   dide   |
 | wpia-bots              |   1   |  2  | 100  |  05 |   dide   |
 | wpia-mint-dev          |   2   | 16  | 500  |  06 |   dide   |
-| wpia-ncov-dev          |   2   | 64  | 1000 |  07 |   dide   |
+| wpia-ncov-dev          |   10  | 64  | 1000 |  07 |   dide   |
 | wpia-covid19-forecasts |   6   | 32  | 1000 |  08 |   dide   |
 | wpia-comet             |   2   |  8  | 100  |  09 |   dide   |
 | build-kite1            |   1   | 16  | 100  |  20 | 14.0.0.2 |

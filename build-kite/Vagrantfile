@@ -11,20 +11,21 @@ box = "generic/ubuntu1804"
 gateway = "14.0.0.1"
 ram = "16384"
 agents = [
-  { :hostname => 'reside-bk1', :ip => '14.0.0.2', :mac => "00:15:5d:1a:84:20"},
-  { :hostname => 'reside-bk2', :ip => '14.0.0.3', :mac => "00:15:5d:1a:84:21"},
-  { :hostname => 'reside-bk3', :ip => '14.0.0.4', :mac => "00:15:5d:1a:84:22"},
-  { :hostname => 'reside-bk4', :ip => '14.0.0.5', :mac => "00:15:5d:1a:84:23"},
-  { :hostname => 'reside-bk5', :ip => '14.0.0.6', :mac => "00:15:5d:1a:84:24"},
-  { :hostname => 'reside-bk6', :ip => '14.0.0.7', :mac => "00:15:5d:1a:84:25"},
-  { :hostname => 'reside-bk7', :ip => '14.0.0.8', :mac => "00:15:5d:1a:84:26"},
-  { :hostname => 'reside-bk8', :ip => '14.0.0.9', :mac => "00:15:5d:1a:84:27"}
+  { :hostname => 'reside-bk1', :ip => '14.0.0.2', :mac => "00:15:5d:1a:84:20", :queue => "default"},
+  { :hostname => 'reside-bk2', :ip => '14.0.0.3', :mac => "00:15:5d:1a:84:21", :queue => "default"},
+  { :hostname => 'reside-bk3', :ip => '14.0.0.4', :mac => "00:15:5d:1a:84:22", :queue => "default"},
+  { :hostname => 'reside-bk4', :ip => '14.0.0.5', :mac => "00:15:5d:1a:84:23", :queue => "default"},
+  { :hostname => 'reside-bk5', :ip => '14.0.0.6', :mac => "00:15:5d:1a:84:24", :queue => "default"},
+  { :hostname => 'reside-bk6', :ip => '14.0.0.7', :mac => "00:15:5d:1a:84:25", :queue => "default"},
+  { :hostname => 'reside-bk7', :ip => '14.0.0.8', :mac => "00:15:5d:1a:84:26", :queue => "default"},
+  { :hostname => 'reside-bk8', :ip => '14.0.0.9', :mac => "00:15:5d:1a:84:27", :queue => "default"},
+  { :hostname => 'reside-deploy1', :ip => '14.0.0.10', :mac => "00:15:5d:1a:84:28", :queue => "deploy"}
 ]
 
 Vagrant.configure(2) do |config|
   config.vm.box = box
   config.vm.network "public_network", bridge: "NATSwitch", auto_config: false
-    
+
   agents.each do |agent|
     config.vm.define agent[:hostname] do |agent_config|
       agent_config.vm.provider :hyperv do |hyperv|
@@ -39,13 +40,14 @@ Vagrant.configure(2) do |config|
       agent_config.vm.hostname = agent[:hostname]
       agent_config.vm.provision :shell, path: "./vm_scripts/setup-network.sh",
 		                                  env: {"IP" => agent[:ip], "GW" => gateway}
-    
+
       agent_config.vm.provision :shell, path: "./vm_scripts/setup.sh"
       agent_config.vm.provision :shell, path: "./vm_scripts/setup-agent.sh"
       agent_config.vm.provision :shell, path: "./vm_scripts/setup-docker.sh"
       agent_config.vm.provision :shell, path: "./vm_scripts/setup-vault.sh"
       agent_config.vm.provision :shell, path: "./vm_scripts/setup-pip.sh"
-      agent_config.vm.provision :shell, path: "./vm_scripts/start-agent.sh", env: vault_config
+      agent_config.vm.provision :shell, path: "./vm_scripts/start-agent.sh", env: vault_config,
+                                        args: agent[:queue]
 	end
   end
 end

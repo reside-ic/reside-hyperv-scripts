@@ -80,7 +80,7 @@ cat >/etc/buildkite-agent/hooks/pre-exit <<'EOF'
 docker rm --force $(docker ps --quiet) 2>/dev/null || true
 EOF
 
-TAG_STRING="tags=\"node-type=general,os=ubuntu,vmhost=$VMHOST_NAME\""
+TAG_STRING="tags=\"node-type=general,os=ubuntu,vmhost=$VMHOST_NAME,queue=$1\""
 echo $TAG_STRING | sudo tee -a /etc/buildkite-agent/buildkite-agent.cfg
 
 cat <<EOF > /etc/cron.daily/docker-cleanup

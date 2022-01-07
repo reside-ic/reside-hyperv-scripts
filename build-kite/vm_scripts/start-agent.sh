@@ -29,6 +29,14 @@ fi
 
 chown -R buildkite-agent.buildkite-agent $AGENT_SSH
 
+# Add ssh key for authenticating with HIV servers
+# (for running deployments via buildkite) on deployment agents
+if [[ "$1" == "hint-deploy" ]]; then
+  vault read -field=public secret/hiv/ssh > $AGENT_SSH/id_hiv.pub
+  vault read -field=private secret/hiv/ssh > $AGENT_SSH/id_hiv
+  chmod 600 $AGENT_SSH/id_hiv
+fi
+
 # NOTE: this is a fake email address for our robot account:
 $AS_AGENT git config --global user.email "rich.fitzjohn+vimc@gmail.com"
 $AS_AGENT git config --global user.name "vimc-robot"

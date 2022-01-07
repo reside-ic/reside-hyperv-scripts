@@ -31,7 +31,7 @@ chown -R buildkite-agent.buildkite-agent $AGENT_SSH
 
 # Add ssh key for authenticating with HIV servers
 # (for running deployments via buildkite) on deployment agents
-if [[ "$1" == "deploy" ]]; then
+if [[ "$1" == "hint-deploy" ]]; then
   vault read -field=public secret/hiv/ssh > $AGENT_SSH/id_hiv.pub
   vault read -field=private secret/hiv/ssh > $AGENT_SSH/id_hiv
   chmod 600 $AGENT_SSH/id_hiv

@@ -27,8 +27,6 @@ if ! grep -q '^github.com' $AGENT_SSH/known_hosts; then
     ssh-keyscan github.com >> $AGENT_SSH/known_hosts
 fi
 
-chown -R buildkite-agent.buildkite-agent $AGENT_SSH
-
 # Add ssh key for authenticating with HIV servers
 # (for running deployments via buildkite) on deployment agents
 if [[ "$1" == "hint-deploy" ]]; then
@@ -36,6 +34,8 @@ if [[ "$1" == "hint-deploy" ]]; then
   vault read -field=private secret/hiv/ssh > $AGENT_SSH/id_hiv
   chmod 600 $AGENT_SSH/id_hiv
 fi
+
+chown -R buildkite-agent.buildkite-agent $AGENT_SSH
 
 # NOTE: this is a fake email address for our robot account:
 $AS_AGENT git config --global user.email "rich.fitzjohn+vimc@gmail.com"

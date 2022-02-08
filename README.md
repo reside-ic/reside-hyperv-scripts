@@ -15,12 +15,12 @@ to run lots of VMs.
 ## Operating System Config
 
 * The system runs Windows Server 2019 with Hyper-V. The `C:` is for Operating System
-only, whereas `D:` is the large NVMe space. 
+only, whereas `D:` is the large NVMe space.
 * ISOs for the VM operating systems are in `D:\ISOs`
 * Disks for the VMs will be in the form `D:\VMs\vmname\base.vhdx` - should any other
 important vm-specific files or notes be needed, put them in that folder too.
 * This repo will be sitting in `D:\reside-hyperv-scripts`
-* NotePad++ is installed for slightly less painful editing of files. 
+* NotePad++ is installed for slightly less painful editing of files.
 * And the command prompt is rigged up with most of the GNU tools.
 * For disaster/diagnostics, the IPMI for wpia-reside1 is on `13.0.0.220`, accessible
 from wpia-didenas2.
@@ -28,7 +28,7 @@ from wpia-didenas2.
 ## Staying Sane in the Command Line
 
 * Windows Command line and Powershell are not too bad once you get used to them.
-* I've also wired most of the standard GNU tools are wired in. (`diff`, `grep`, 
+* I've also wired most of the standard GNU tools are wired in. (`diff`, `grep`,
 `tail`, `more`, `cat` - etc. Ask me if any are missing that you want.)
 * Also, `edit file.txt` will spawn a NotePad++ editor, which is fairly pleasant.
 * All the Hyper-V functionality can be done through either a GUI, or through scripted
@@ -51,6 +51,7 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | wpia-ncov-dev          |   10  | 64  | 1000 |  07 |   dide   |
 | wpia-covid19-forecasts |   6   | 32  | 1000 |  08 |   dide   |
 | wpia-comet             |   2   |  8  | 100  |  09 |   dide   |
+| wpia-db-experiment     |   2   | 64  | 500  |  10 |   dide   |
 | build-kite1            |   1   | 16  | 100  |  20 | 14.0.0.2 |
 | build-kite2            |   1   | 16  | 100  |  21 | 14.0.0.3 |
 | build-kite3            |   1   | 16  | 100  |  22 | 14.0.0.4 |
@@ -64,30 +65,30 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 
 * Note that wpia-vault, wpia-mint and wpia-data were created with a legacy method.
   We'll let them be, but for new VMs, use the Vagrant methods below.
-  
+
 ### For machines that don't need a DIDE IP address
 
 * Skip the next paragraph about contacting Chris, and then copy defaults
   from the `build-kite` folder instead of bots.
-  
+
 ### For machines that need a DIDE IP address
 
 * The VM  should be named `wpia-something`. Create a PR on this repo, updating
   the table above with a MAC address. Contact Chris in IT and ask for an IP address,
-  providing him with the MAC address, the `wpia-something` name, and letting him 
+  providing him with the MAC address, the `wpia-something` name, and letting him
   know this will be a VM running on wpia-reside1. You may also want to request that
   he creates an alias for `wpia-something` called just `something`. This may take
   15 or 30 minutes - wait until you can ping `wpia-something.dide.ic.ac.uk` before
   continuing.
-  
+
 * Remote Desktop to `wpia-reside1.dide.ic.ac.uk` with DIDE details; there should be
   a `Command Prompt` icon on the desktop, which has been made as linux-compatible
-  as possible. You can also use `edit` to fire up `Notepad++` for a reasonably 
+  as possible. You can also use `edit` to fire up `Notepad++` for a reasonably
   sane editing experience.
-  
+
 * Make a new directory for the new machine, copying the defaults from the `bots`
   folder. (Or if you don't need a DIDE IP address, the `build-kite` folder.
-  
+
 ```
   D:\reside-hyperv-scripts> md something
   D:\reside-hyperv-scripts> cd something
@@ -100,12 +101,12 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 
 * Edit the Vagrantfile. The resources required are at the top, and scripts to
   provision the VM a bit lower.
-  
-* `vagrant up` from that folder. 
- 
+
+* `vagrant up` from that folder.
+
 * Then you should be able to connect to the new VM. For a local non-dide machine, use
-Putty on wpia-reside1 to the IP address you gave the VM; for DIDE machines, any DIDE 
-machine will do. Login for the first time with `vagrant` / `vagrant`. 
+Putty on wpia-reside1 to the IP address you gave the VM; for DIDE machines, any DIDE
+machine will do. Login for the first time with `vagrant` / `vagrant`.
 
 ## Disk sizes
 
@@ -122,6 +123,6 @@ Next. Finish!
 * Run `Hyper-V Manager` from the Start bar.
 * You'll immediately see the VMs and their status, and right clicking on them
 will get you to their settings, or options to connect to them, turn them off/on, etc.
-* Deleting a VM through this interface does not delete the VM's disk(s), which is 
+* Deleting a VM through this interface does not delete the VM's disk(s), which is
 probably a good thing. If you do want to really purge the VM and start again, then
 delete the drives manually from `D:\VMs\vmname`, and then the `vmname` folder.

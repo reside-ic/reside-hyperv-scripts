@@ -100,5 +100,5 @@ EOF
 chmod +x /etc/cron.daily/docker-cleanup
 
 ## Startup agent
-sudo systemctl enable buildkite-agent && sudo systemctl start buildkite-agent
+sudo systemctl enable buildkite-agent && sudo systemctl start buildkite-agent --cancel-grace-period 60
 

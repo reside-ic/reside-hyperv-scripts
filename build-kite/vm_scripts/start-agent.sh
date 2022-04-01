@@ -90,6 +90,7 @@ EOF
 
 TAG_STRING="tags=\"node-type=general,os=ubuntu,vmhost=$VMHOST_NAME,queue=$1\""
 echo $TAG_STRING | sudo tee -a /etc/buildkite-agent/buildkite-agent.cfg
+echo "cancel-grace-period=60" | sudo tee -a /etc/buildkite-agent/buildkite-agent.cfg
 
 cat <<EOF > /etc/cron.daily/docker-cleanup
 #!/usr/bin/env bash
@@ -100,5 +101,4 @@ EOF
 chmod +x /etc/cron.daily/docker-cleanup
 
 ## Startup agent
-sudo systemctl enable buildkite-agent && sudo systemctl start buildkite-agent --cancel-grace-period 60
-
+sudo systemctl enable buildkite-agent && sudo systemctl start buildkite-agent

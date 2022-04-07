@@ -19,13 +19,16 @@ Vagrant.configure(2) do |config|
     hyperv.auto_stop_action = "Save"
   end
   config.vm.hostname = hostname
-  
+
   config.vm.provision :shell, path: "../common/setup.sh",
 		                                  env: {"hostname" => hostname}
-  
+
   config.vm.provision :shell, path: "./vm_scripts/setup-user.sh",
                                           env: {"newuser" => "wes", "machine" => "wrh1@wpia-dide065", "pubkey" => "AAAAB3NzaC1yc2EAAAABJQAAAQEAgR9Atls6I2HHHlk5GdsCZO9oXiysVmFtxWr0pOg0B145W4VrkbJbysxvpqGbv+V4A0WFOLMnFaGOSntrBGBpjZ9IudKkpPQgtXoh4kSVflRW5Rq26nj9CnfpQdHWAzX6XCA5fJtfGegHkSMzghO0SQ+/6qboE3KkYAbEUfYAkxhMgD2zU2GKvLfEb6UPKBYpxMjc5J39/pn1laRUTS7nyj98CzOGQhU2hB1PYq9S77hWGmlJsREwgfs8a3aWEEKSbvUR8x1JtD/OE69nwbaY0gd79JJ2sF2mFZoYdmsNHpFndKKMMqwWL4sLihGke0f0Xss8vCuLDWvng4k4cKQ5hw=="}
-             
+
   config.vm.provision :shell, path: "../common/setup-docker.sh"
-  
+
+  config.vm.provision :shell, path: "../common/setup-ssh-keys.sh", run: "always",
+                              args: ["r-ash", "richfitz", "weshinsley", "hillalex", "EmmaLRussell"]
+
 end

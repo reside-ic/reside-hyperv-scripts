@@ -9,5 +9,5 @@ fi
 
 for username in "$@"
 do
-    curl --no-progress-meter https://github.com/$username.keys >> "/home/vagrant/.ssh/authorized_keys"
+    curl -sS https://github.com/$username.keys >> "/home/vagrant/.ssh/authorized_keys"
 done

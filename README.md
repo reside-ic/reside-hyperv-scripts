@@ -76,7 +76,7 @@ Note:
   how that performs if we fill the machine. For now, we seem to
   be within physical core usage.
 * Figures represent allocated resources; looking at task manager
-  will give smaller usage figures, as Hyper-V will only allocated
+  will give smaller usage figures, as Hyper-V will only allocate
   real resources when they are demanded. Disk usage will grow as
   the VM fills it.
 * Note that RAM is also shared with operating system - hard to

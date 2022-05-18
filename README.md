@@ -51,7 +51,7 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | wpia-ncov-dev          |   10  | 64  | 1000 |  07 |   dide   |
 | wpia-covid19-forecasts |   6   | 32  | 1000 |  08 |   dide   |
 | wpia-comet             |   2   |  8  | 100  |  09 |   dide   |
-| wpia-db-experiment     |   2   | 256 | 500  |  10 |   dide   |
+| wpia-db-experiment     |   2   | 256 | 2000 |  10 |   dide   |
 | build-kite1            |   1   | 16  | 100  |  20 | 14.0.0.2 |
 | build-kite2            |   1   | 16  | 100  |  21 | 14.0.0.3 |
 | build-kite3            |   1   | 16  | 100  |  22 | 14.0.0.4 |
@@ -60,6 +60,30 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | build-kite6            |   1   | 16  | 100  |  25 | 14.0.0.7 |
 | build-kite7            |   1   | 16  | 100  |  26 | 14.0.0.8 |
 | build-kite8            |   1   | 16  | 100  |  27 | 14.0.0.9 |
+
+## Usage of whole machine:
+
+|                      | Total     | VM allocated   |   Spare   |
+|----------------------|-----------|----------------|-----------|
+| Cores (logical)      |    96     |     36         |    60     |
+| RAM (Gb)             |  1024     |    542         |   482     |
+| DISK (D: SSD) (Tb)   |  11.6     |    6.7         |   4.9     |
+
+Note:
+
+* Hyperthreading is turned on, as recommended for Hyper-V. So this
+  machine has 48 physical cores, 96 logical ones. We'll perhaps see
+  how that performs if we fill the machine. For now, we seem to
+  be within physical core usage.
+* Figures represent allocated resources; looking at task manager
+  will give smaller usage figures, as Hyper-V will only allocate
+  real resources when they are demanded. Disk usage will grow as
+  the VM fills it.
+* Note that RAM is also shared with operating system - hard to
+  estimate how much the OS really needs. 16Gb perhaps?
+* DISK is not shared with OS though - the D: is separate. Remember
+  to allocate for the disk-space for the VM, and also its RAM, since
+  the VM swap/hibernation files are also written to the disk.
 
 ## How to create a new VM with this repo
 

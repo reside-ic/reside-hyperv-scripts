@@ -53,6 +53,7 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | wpia-comet             |   2   |  8  | 100  |  09 |   dide   |
 | wpia-db-experiment     |   2   | 256 | 2000 |  10 |   dide   |
 | wpia-monkeypox         |   4   | 64  | 200  |  11 |   dide   |
+| wpia-wodin-dev         |   2   |  4  | 200  |  12 |   dide   |
 | build-kite1            |   1   | 16  | 100  |  20 | 14.0.0.2 |
 | build-kite2            |   1   | 16  | 100  |  21 | 14.0.0.3 |
 | build-kite3            |   1   | 16  | 100  |  22 | 14.0.0.4 |
@@ -66,9 +67,9 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 
 |                      | Total     | VM allocated   |   Spare   |
 |----------------------|-----------|----------------|-----------|
-| Cores (logical)      |    96     |     40         |    56     |
-| RAM (Gb)             |  1024     |    606         |   418     |
-| DISK (D: SSD) (Tb)   |  11.6     |    6.9         |   4.7     |
+| Cores (logical)      |    96     |     42         |    54     |
+| RAM (Gb)             |  1024     |    610         |   414     |
+| DISK (D: SSD) (Tb)   |  11.6     |    7.1         |   4.5     |
 
 Note:
 

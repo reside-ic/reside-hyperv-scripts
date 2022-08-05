@@ -1,10 +1,10 @@
 # -*- mode: ruby -*-
 
 box = "generic/ubuntu2004"
-ram = "8192"
+ram = "65536"
 hostname = "wpia-epimodels"
 mac = "00:15:5d:1a:84:13"
-cpus = 4
+cpus = 12
 
 Vagrant.configure(2) do |config|
   config.vm.box = box

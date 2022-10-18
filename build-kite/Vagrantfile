@@ -7,7 +7,7 @@ vault_config = Hash[File.read(vault_config_file).split("\n").
 Vagrant.require_version ">= 2.2.10"
 
 domain = 'localdomain'
-box = "generic/ubuntu1804"
+box = "generic/ubuntu2204"
 gateway = "14.0.0.1"
 ram = "16384"
 agents = [

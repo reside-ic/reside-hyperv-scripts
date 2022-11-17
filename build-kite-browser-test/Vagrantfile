@@ -12,7 +12,7 @@ gateway = "14.0.0.1"
 ram = "65536"
 cores = "4"
 agents = [
-  { :hostname => 'reside-bk-browser-test1', :ip => '14.0.0.11', :mac => "00:15:5d:1a:84:29", :queue => "default"},
+  { :hostname => 'reside-bk-browser-test1', :ip => '14.0.0.11', :mac => "00:15:5d:1a:84:29", :queue => "browser-test"},
 ]
 
 Vagrant.configure(2) do |config|

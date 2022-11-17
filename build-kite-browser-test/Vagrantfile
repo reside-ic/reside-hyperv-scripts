@@ -1,0 +1,46 @@
+# -*- mode: ruby -*-
+
+vault_config_file = '../build-kite/vault_config'
+vault_config = Hash[File.read(vault_config_file).split("\n").
+                      map{|s| s.split('=')}]
+
+Vagrant.require_version ">= 2.2.10"
+
+domain = 'localdomain'
+box = "generic/ubuntu2204"
+gateway = "14.0.0.1"
+ram = "65536"
+cores = "4"
+agents = [
+  { :hostname => 'reside-bk-browser-test1', :ip => '14.0.0.11', :mac => "00:15:5d:1a:84:29", :queue => "default"},
+]
+
+Vagrant.configure(2) do |config|
+  config.vm.box = box
+  config.vm.network "public_network", bridge: "NATSwitch", auto_config: false
+
+  agents.each do |agent|
+    config.vm.define agent[:hostname] do |agent_config|
+      agent_config.vm.provider :hyperv do |hyperv|
+        hyperv.mac = agent[:mac]
+        hyperv.vmname = agent[:hostname]
+        hyperv.cpus = cores
+        hyperv.maxmemory = ram
+        hyperv.memory = ram
+        hyperv.auto_start_action = "StartIfRunning"
+        hyperv.auto_stop_action = "Save"
+      end
+      agent_config.vm.hostname = agent[:hostname]
+      agent_config.vm.provision :shell, path: "../build-kite/vm_scripts/setup-network.sh",
+		                                  env: {"IP" => agent[:ip], "GW" => gateway}
+
+      agent_config.vm.provision :shell, path: "../build-kite/vm_scripts/setup.sh"
+      agent_config.vm.provision :shell, path: "../build-kite/vm_scripts/setup-agent.sh"
+      agent_config.vm.provision :shell, path: "../build-kite/vm_scripts/setup-docker.sh"
+      agent_config.vm.provision :shell, path: "../build-kite/vm_scripts/setup-vault.sh"
+      agent_config.vm.provision :shell, path: "../build-kite/vm_scripts/setup-pip.sh"
+      agent_config.vm.provision :shell, path: "../build-kite/vm_scripts/start-agent.sh", env: vault_config,
+                                        args: agent[:queue]
+    end
+  end
+end

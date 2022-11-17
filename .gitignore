@@ -1,3 +1,4 @@
 build-kite/vault_config
 .idea
 .vagrant
+*.key

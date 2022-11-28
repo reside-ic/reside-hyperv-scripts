@@ -55,22 +55,24 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | wpia-wodin-dev         |   2   |  4  | 200  |  12 |   dide   |
 | wpia-epimodels         |   12  | 64  | 200  |  13 |   dide   |
 | wpia-beebop            |   4   | 64  | 500  |  14 |   dide   |
-| build-kite1            |   1   | 16  | 100  |  20 | 14.0.0.2 |
-| build-kite2            |   1   | 16  | 100  |  21 | 14.0.0.3 |
-| build-kite3            |   1   | 16  | 100  |  22 | 14.0.0.4 |
-| build-kite4            |   1   | 16  | 100  |  23 | 14.0.0.5 |
-| build-kite5            |   1   | 16  | 100  |  24 | 14.0.0.6 |
-| build-kite6            |   1   | 16  | 100  |  25 | 14.0.0.7 |
-| build-kite7            |   1   | 16  | 100  |  26 | 14.0.0.8 |
-| build-kite8            |   1   | 16  | 100  |  27 | 14.0.0.9 |
+| reside-bk1             |   1   | 16  | 100  |  20 | 14.0.0.2 |
+| reside-bk2             |   1   | 16  | 100  |  21 | 14.0.0.3 |
+| reside-bk3             |   1   | 16  | 100  |  22 | 14.0.0.4 |
+| reside-bk4             |   1   | 16  | 100  |  23 | 14.0.0.5 |
+| reside-bk5             |   1   | 16  | 100  |  24 | 14.0.0.6 |
+| reside-bk6             |   1   | 16  | 100  |  25 | 14.0.0.7 |
+| reside-bk7             |   1   | 16  | 100  |  26 | 14.0.0.8 |
+| reside-bk8             |   1   | 16  | 100  |  27 | 14.0.0.9 |
+| reside-deploy1         |   1   | 16  | 100  |  28 | 14.0.0.10|
+| reside-bk-browser-test1|   4   | 64  | 100  |  29 | 14.0.0.11|
 
 ## Usage of whole machine:
 
 |                      | Total     | VM allocated   |   Spare   |
 |----------------------|-----------|----------------|-----------|
-| Cores (logical)      |    96     |     50         |    46     |
-| RAM (Gb)             |  1024     |    610         |   414     |
-| DISK (D: SSD) (Tb)   |  11.6     |    7.1         |   4.5     |
+| Cores (logical)      |    96     |     55         |    41     |
+| RAM (Gb)             |  1024     |    690         |   334     |
+| DISK (D: SSD) (Tb)   |  11.6     |    7.3         |   4.3     |
 
 ## Retired VMs
 

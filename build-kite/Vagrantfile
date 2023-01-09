@@ -19,7 +19,13 @@ agents = [
   { :hostname => 'reside-bk6', :ip => '14.0.0.7', :mac => "00:15:5d:1a:84:25", :queue => "default"},
   { :hostname => 'reside-bk7', :ip => '14.0.0.8', :mac => "00:15:5d:1a:84:26", :queue => "default"},
   { :hostname => 'reside-bk8', :ip => '14.0.0.9', :mac => "00:15:5d:1a:84:27", :queue => "default"},
-  { :hostname => 'reside-deploy1', :ip => '14.0.0.10', :mac => "00:15:5d:1a:84:28", :queue => "hint-deploy"}
+  { :hostname => 'reside-deploy1', :ip => '14.0.0.10', :mac => "00:15:5d:1a:84:28", :queue => "hint-deploy"},
+  { :hostname => 'reside-bk-multicore1', :ip => '14.0.0.12', :mac => "00:15:5d:1a:84:30", :queue => "parallel",
+    :cpus => 4, :ram => '65536'},
+  { :hostname => 'reside-bk-multicore2', :ip => '14.0.0.13', :mac => "00:15:5d:1a:84:31", :queue => "parallel",
+    :cpus => 4, :ram => '65536'},
+  { :hostname => 'reside-bk-multicore3', :ip => '14.0.0.14', :mac => "00:15:5d:1a:84:32", :queue => "parallel",
+    :cpus => 4, :ram => '65536'}
 ]
 
 Vagrant.configure(2) do |config|
@@ -31,9 +37,9 @@ Vagrant.configure(2) do |config|
       agent_config.vm.provider :hyperv do |hyperv|
         hyperv.mac = agent[:mac]
         hyperv.vmname = agent[:hostname]
-        hyperv.cpus = 1
-        hyperv.maxmemory = ram
-        hyperv.memory = ram
+        hyperv.cpus = agent[:cpus] || 1
+        hyperv.maxmemory = agent[:ram] || ram
+        hyperv.memory = agent[:ram] || ram
         hyperv.auto_start_action = "StartIfRunning"
         hyperv.auto_stop_action = "Save"
       end

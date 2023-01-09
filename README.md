@@ -67,7 +67,7 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | reside-bk-browser-test1|   4   | 64  | 100  |  29 | 14.0.0.11|
  | reside-bk-multicore1   |   4   | 64  | 100  |  30 | 14.0.0.12|
  | reside-bk-multicore2   |   4   | 64  | 100  |  30 | 14.0.0.12|
- | reside-bk-multicore3   |   4   | 64  | 100  |  30 | 14.0.0.12|
+ | reside-bk-multicore3   |   4   | 64  | 100  |  30 | 14.0.0.14|
 
 ## Usage of whole machine:
 

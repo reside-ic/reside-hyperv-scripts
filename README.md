@@ -43,16 +43,16 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 
 | Machine                | Cores | RAM | Disk | MAC |     IP   |
 |------------------------|-------|-----|------|-----|----------|
-| wpia-vault             |   1   |  4  |  50  |  01 |   dide   |
+| wpia-vault             |   1   | 4   |  50  |  01 |   dide   |
 | wpia-mint              |   2   | 16  | 500  |  02 |   dide   |
 | wpia-data              |   2   | 16  | 100  |  03 |   dide   |
-| wpia-bots              |   1   |  2  | 100  |  05 |   dide   |
+| wpia-bots              |   1   | 2   | 100  |  05 |   dide   |
 | wpia-mint-dev          |   2   | 16  | 500  |  06 |   dide   |
 | wpia-ncov-dev          |   10  | 64  | 1000 |  07 |   dide   |
 | wpia-covid19-forecasts |   6   | 32  | 1000 |  08 |   dide   |
-| wpia-comet             |   2   |  8  | 100  |  09 |   dide   |
-| wpia-db-experiment     |   2   | 256 | 2000 |  10 |   dide   |
-| wpia-wodin-dev         |   2   |  4  | 200  |  12 |   dide   |
+| wpia-comet             |   2   | 8   | 100  |  09 |   dide   |
+| wpia-db-experiment     |   2   | 128 | 2000 |  10 |   dide   |
+| wpia-wodin-dev         |   2   | 4   | 200  |  12 |   dide   |
 | wpia-epimodels         |   12  | 64  | 200  |  13 |   dide   |
 | wpia-beebop            |   10  | 64  | 500  |  14 |   dide   |
 | reside-bk1             |   1   | 16  | 100  |  20 | 14.0.0.2 |
@@ -65,16 +65,16 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | reside-bk8             |   1   | 16  | 100  |  27 | 14.0.0.9 |
 | reside-deploy1         |   1   | 16  | 100  |  28 | 14.0.0.10|
 | reside-bk-browser-test1|   4   | 64  | 100  |  29 | 14.0.0.11|
- | reside-bk-multicore1   |   4   | 64  | 100  |  30 | 14.0.0.12|
- | reside-bk-multicore2   |   4   | 64  | 100  |  30 | 14.0.0.13|
- | reside-bk-multicore3   |   4   | 64  | 100  |  30 | 14.0.0.14|
+ | reside-bk-multicore1   |   4   | 128 | 100  |  30 | 14.0.0.12|
+ | reside-bk-multicore2   |   4   | 128 | 100  |  30 | 14.0.0.13|
+ | reside-bk-multicore3   |   4   | 128 | 100  |  30 | 14.0.0.14|
 
 ## Usage of whole machine:
 
 |                      | Total     | VM allocated | Spare |
 |----------------------|-----------|--------------|-------|
 | Cores (logical)      |    96     | 73           | 23    |
-| RAM (Gb)             |  1024     | 786          | 238   |
+| RAM (Gb)             |  1024     | 850          | 174   |
 | DISK (D: SSD) (Tb)   |  11.6     | 7.6          | 4.0   |
 
 ## Retired VMs

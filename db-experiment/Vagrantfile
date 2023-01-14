@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 
 box = "generic/ubuntu1804"
-ram = "262144"
+ram = "131072"
 hostname = "wpia-db-experiment"
 mac = "00:15:5d:1a:84:10"
 cpus = 2

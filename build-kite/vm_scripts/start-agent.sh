@@ -83,6 +83,13 @@ fi
 export CODECOV_TOKEN=$CODECOV_TOKEN
 EOF
 
+# Add no of cores as env var, used for controlling num processes
+# when running tests in parallel
+NUM_CORES=$(grep -c ^processor /proc/cpuinfo)
+cat << EOF > /etc/buildkite-agent/hooks/environment
+NUM_CORES=$NUM_CORES
+EOF
+
 # Clean-up any remaining Docker containers after each job
 cat >/etc/buildkite-agent/hooks/pre-exit <<'EOF'
 docker rm --force $(docker ps --quiet) 2>/dev/null || true

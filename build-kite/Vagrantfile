@@ -20,7 +20,7 @@ agents = [
   { :hostname => 'reside-bk7', :ip => '14.0.0.8', :mac => "00:15:5d:1a:84:26", :queue => "default"},
   { :hostname => 'reside-bk8', :ip => '14.0.0.9', :mac => "00:15:5d:1a:84:27", :queue => "default"},
   { :hostname => 'reside-deploy1', :ip => '14.0.0.10', :mac => "00:15:5d:1a:84:28", :queue => "hint-deploy",
-    :ram = '1024'},
+    :ram => '1024'},
   { :hostname => 'reside-bk-multicore1', :ip => '14.0.0.12', :mac => "00:15:5d:1a:84:30", :queue => "parallel",
     :cpus => 4, :ram => '65536'},
   { :hostname => 'reside-bk-multicore2', :ip => '14.0.0.13', :mac => "00:15:5d:1a:84:31", :queue => "parallel",

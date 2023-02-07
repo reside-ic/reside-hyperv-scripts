@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -eu
 
+echo "-------------STARTING AGENT---------------------"
+
 ## Login to vault with token
 vault login -method=github
 

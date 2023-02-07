@@ -51,6 +51,11 @@ ORDERLYWEB_CODECOV=$(vault read -field=token secret/vimc/orderly-web/codecov)
 HINTR_CODECOV=$(vault read -field=token secret/hintr/codecov)
 COMET_CODECOV=$(vault read -field=token secret/comet/codecov)
 YOUTRACK_TOKEN=$(vault read -field=value secret/vimc-robot/youtrack-task-queue-token)
+
+# Add no of cores as env var, used for controlling num processes
+# when running tests in parallel
+NUM_CORES=$(grep -c ^processor /proc/cpuinfo)
+
 cat << EOF > /etc/buildkite-agent/hooks/environment
 HINT_CODECOV=$HINT_CODECOV
 MINT_CODECOV=$MINT_CODECOV
@@ -58,6 +63,7 @@ ORDERLYWEB_CODECOV=$ORDERLYWEB_CODECOV
 HINTR_CODECOV=$HINTR_CODECOV
 COMET_CODECOV=$COMET_CODECOV
 export YOUTRACK_TOKEN=$YOUTRACK_TOKEN
+export NUM_CORES=$NUM_CORES
 EOF
 cat << 'EOF' >> /etc/buildkite-agent/hooks/environment
 export PATH=/var/lib/buildkite-agent/.local/bin:$PATH
@@ -85,13 +91,6 @@ fi
 export CODECOV_TOKEN=$CODECOV_TOKEN
 EOF
 
-# Add no of cores as env var, used for controlling num processes
-# when running tests in parallel
-NUM_CORES=$(grep -c ^processor /proc/cpuinfo)
-cat << EOF > /etc/buildkite-agent/hooks/environment
-export NUM_CORES=$NUM_CORES
-EOF
-
 # Clean-up any remaining Docker containers after each job
 cat >/etc/buildkite-agent/hooks/pre-exit <<'EOF'
 docker rm --force $(docker ps --quiet) 2>/dev/null || true
@@ -111,3 +110,5 @@ chmod +x /etc/cron.daily/docker-cleanup
 
 ## Startup agent
 sudo systemctl enable buildkite-agent && sudo systemctl start buildkite-agent
+
+echo "-------------AGENT STARTED! ---------------------"

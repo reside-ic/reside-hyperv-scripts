@@ -44,3 +44,5 @@ chmod 755 /etc/cron.daily/check_reboot_required
 
 sed -i 's|#PasswordAuthentication yes|PasswordAuthentication no|' /etc/ssh/sshd_config
 sed -i 's|#PubkeyAuthentication yes|PubkeyAuthentication yes|' /etc/ssh/sshd_config
+
+echo 'export PATH="$HOME/.local/bin:$PATH"' > /etc/profile.d/add-local-bin.sh

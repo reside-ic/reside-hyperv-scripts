@@ -54,6 +54,7 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | wpia-wodin-dev         |   2   | 4   | 200  | 12  |   dide   |
 | wpia-epimodels         |   12  | 64  | 200  | 13  |   dide   |
 | wpia-beebop            |   10  | 64  | 500  | 14  |   dide   |
+| wpia-malaria-orderly   |   2   | 64  | 1000 | 15  |   dide   |
 | reside-bk1             |   1   | 16  | 100  | 20  | 14.0.0.2 |
 | reside-bk2             |   1   | 16  | 100  | 21  | 14.0.0.3 |
 | reside-bk3             |   1   | 16  | 100  | 22  | 14.0.0.4 |
@@ -72,9 +73,9 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 
 |                      | Total     | VM allocated | Spare |
 |----------------------|-----------|--------------|-------|
-| Cores (logical)      |    96     | 71           | 25    |
-| RAM (Gb)             |  1024     | 722          | 302   |
-| DISK (D: SSD) (Tb)   |  11.6     | 5.6          | 6.0   |
+| Cores (logical)      |    96     | 73           | 23    |
+| RAM (Gb)             |  1024     | 658          | 238   |
+| DISK (D: SSD) (Tb)   |  11.6     | 7.6          | 4.0   |
 
 ## Retired VMs
 
@@ -154,8 +155,37 @@ machine will do. Login for the first time with `vagrant` / `vagrant`.
 the disk size:- Right click on the VM, Settings, find IDE Controller 0
 and Hard-Drive. Edit button, Next, Expand, Next, choose the size.
 Next. Finish!
+
+### For Ubuntu 20 and earlier:-
 * Restart the VM, and... `sudo growpart /dev/sda 3` followed by
 `sudo resize2fs /dev/sda3` will sort it out.
+
+### For Ubuntu 22:-
+
+* Restart the VM.
+`df` and look for a line similar to
+```
+/dev/mapper/ubuntu--vg-ubuntu--lv  64704108 6700532  54684384  11% /
+```
+
+You can also, `sudo lsblk` to see that...
+```
+├─sda2                      8:2    0     2G  0 part /boot
+└─sda3                      8:3    0  1022G  0 part
+  └─ubuntu--vg-ubuntu--lv 253:0    0    63G  0 lvm  /
+```
+... we have 1Tb of space, but the lvm partition is only 63Gb.
+
+```
+sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
+resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+```
+
+and then `sudo lsblk` again will show the partition has grown.
+```
+└─sda3                      8:3    0  1022G  0 part
+  └─ubuntu--vg-ubuntu--lv 253:0    0  1022G  0 lvm  /
+```
 
 ## Diagnostics / Monitoring with a GUI
 

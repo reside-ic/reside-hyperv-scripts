@@ -164,21 +164,28 @@ Next. Finish!
 
 * Restart the VM.
 `df` and look for a line similar to
-`/dev/mapper/ubuntu--vg-ubuntu--lv  64704108 6700532  54684384  11% /`
-And if you like, `sudo lsblk` might include
+```
+/dev/mapper/ubuntu--vg-ubuntu--lv  64704108 6700532  54684384  11% /
+```
+
+You can also, `sudo lsblk` to see that...
 ```
 ├─sda2                      8:2    0     2G  0 part /boot
 └─sda3                      8:3    0  1022G  0 part
   └─ubuntu--vg-ubuntu--lv 253:0    0    63G  0 lvm  /
 ```
-showing that we have lots of space, but the partition is not using it.
+... we have 1Tb of space, but the lvm partition is only 63Gb.
 
 ```
-sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv`
+sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
 resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
 ```
 
 and then `sudo lsblk` again will show the partition has grown.
+```
+└─sda3                      8:3    0  1022G  0 part
+  └─ubuntu--vg-ubuntu--lv 253:0    0  1022G  0 lvm  /
+```
 
 ## Diagnostics / Monitoring with a GUI
 

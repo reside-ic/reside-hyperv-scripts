@@ -51,7 +51,6 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | wpia-ncov-dev          |   10  | 64  | 1000 | 07  |   dide   |
 | wpia-covid19-forecasts |   6   | 32  | 1000 | 08  |   dide   |
 | wpia-comet             |   2   | 8   | 100  | 09  |   dide   |
-| wpia-db-experiment     |   2   | 128 | 2000 | 10  |   dide   |
 | wpia-wodin-dev         |   2   | 4   | 200  | 12  |   dide   |
 | wpia-epimodels         |   12  | 64  | 200  | 13  |   dide   |
 | wpia-beebop            |   10  | 64  | 500  | 14  |   dide   |
@@ -73,15 +72,16 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 
 |                      | Total     | VM allocated | Spare |
 |----------------------|-----------|--------------|-------|
-| Cores (logical)      |    96     | 73           | 23    |
-| RAM (Gb)             |  1024     | 850          | 174   |
-| DISK (D: SSD) (Tb)   |  11.6     | 7.6          | 4.0   |
+| Cores (logical)      |    96     | 71           | 25    |
+| RAM (Gb)             |  1024     | 722          | 302   |
+| DISK (D: SSD) (Tb)   |  11.6     | 5.6          | 6.0   |
 
 ## Retired VMs
 
 | Machine                | Cores | RAM | Disk | MAC |     IP   |
 |------------------------|-------|-----|------|-----|----------|
-| wpia-monkeypox         |   4   | 64  | 200  |  11 |   dide   |
+| wpia-monkeypox         |   4   | 64  | 200  | 11  |   dide   |
+| wpia-db-experiment     |   2   | 128 | 2000 | 10  |   dide   |
 
 
 Note:

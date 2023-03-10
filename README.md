@@ -55,6 +55,7 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | wpia-epimodels         |   12  | 64  | 200  | 13  |   dide   |
 | wpia-beebop            |   10  | 64  | 500  | 14  |   dide   |
 | wpia-malaria-orderly   |   2   | 64  | 1000 | 15  |   dide   |
+| wpia-orderly           |   4   | 32  | 500  | 16  |   dide   |
 | reside-bk1             |   1   | 16  | 100  | 20  | 14.0.0.2 |
 | reside-bk2             |   1   | 16  | 100  | 21  | 14.0.0.3 |
 | reside-bk3             |   1   | 16  | 100  | 22  | 14.0.0.4 |
@@ -65,17 +66,17 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | reside-bk8             |   1   | 16  | 100  | 27  | 14.0.0.9 |
 | reside-deploy1         |   1   | 1   | 100  | 28  | 14.0.0.10|
 | reside-bk-browser-test1|   4   | 64  | 100  | 29  | 14.0.0.11|
- | reside-bk-multicore1   |   4   | 64  | 100  | 30  | 14.0.0.12|
- | reside-bk-multicore2   |   4   | 64  | 100  | 31  | 14.0.0.13|
- | reside-bk-multicore3   |   4   | 64  | 100  | 32  | 14.0.0.14|
+| reside-bk-multicore1   |   4   | 64  | 100  | 30  | 14.0.0.12|
+| reside-bk-multicore2   |   4   | 64  | 100  | 31  | 14.0.0.13|
+| reside-bk-multicore3   |   4   | 64  | 100  | 32  | 14.0.0.14|
 
 ## Usage of whole machine:
 
 |                      | Total     | VM allocated | Spare |
 |----------------------|-----------|--------------|-------|
-| Cores (logical)      |    96     | 73           | 23    |
-| RAM (Gb)             |  1024     | 658          | 238   |
-| DISK (D: SSD) (Tb)   |  11.6     | 7.6          | 4.0   |
+| Cores (logical)      |    96     | 77           | 19    |
+| RAM (Gb)             |  1024     | 690          | 206   |
+| DISK (D: SSD) (Tb)   |  11.6     | 8.1          | 3.5   |
 
 ## Retired VMs
 

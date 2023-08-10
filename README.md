@@ -159,34 +159,63 @@ and Hard-Drive. Edit button, Next, Expand, Next, choose the size.
 Next. Finish!
 
 ### For Ubuntu 20 and earlier:-
-* Restart the VM, and... `sudo growpart /dev/sda 3` followed by
-`sudo resize2fs /dev/sda3` will sort it out.
+* Restart the VM, and... 
+```
+sudo growpart /dev/sda 3
+sudo resize2fs /dev/sda3
+```
 
 ### For Ubuntu 22:-
 
-* Restart the VM.
-`df` and look for a line similar to
-```
-/dev/mapper/ubuntu--vg-ubuntu--lv  64704108 6700532  54684384  11% /
-```
+Ubuntu 22 changed something about logical volumes, and an extra
+step might be needed. 
 
-You can also, `sudo lsblk` to see that...
+* Restart the VM, then `sudo lsblk`.
+
+If you see something like this:
+
 ```
+sda                         8:0    0   500G  0 disk
+├─sda1                      8:1    0     1M  0 part
 ├─sda2                      8:2    0     2G  0 part /boot
-└─sda3                      8:3    0  1022G  0 part
+└─sda3                      8:3    0   126G  0 part
   └─ubuntu--vg-ubuntu--lv 253:0    0    63G  0 lvm  /
 ```
-... we have 1Tb of space, but the lvm partition is only 63Gb.
+
+then you first have to make `sda3` as big as `sda`. 
+
+``` 
+sudo growpart /dev/sda 3
+sudo lsblk
+```
+
+and hopefully you now see something like 
+
+```
+sda                         8:0    0   500G  0 disk
+├─sda1                      8:1    0     1M  0 part
+├─sda2                      8:2    0     2G  0 part /boot
+└─sda3                      8:3    0   498G  0 part
+  └─ubuntu--vg-ubuntu--lv 253:0    0    63G  0 lvm  /
+```
+
+Now, we need to make the ubuntu--vg as big as sda3. 
 
 ```
 sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
-resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+sudo lsblk
 ```
 
-and then `sudo lsblk` again will show the partition has grown.
+
+and hopefully the partition has now grown:-
+
 ```
-└─sda3                      8:3    0  1022G  0 part
-  └─ubuntu--vg-ubuntu--lv 253:0    0  1022G  0 lvm  /
+sda                         8:0    0   500G  0 disk
+├─sda1                      8:1    0     1M  0 part
+├─sda2                      8:2    0     2G  0 part /boot
+└─sda3                      8:3    0   498G  0 part
+  └─ubuntu--vg-ubuntu--lv 253:0    0   498G  0 lvm  /
 ```
 
 ## Diagnostics / Monitoring with a GUI

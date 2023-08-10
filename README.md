@@ -56,6 +56,7 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | wpia-beebop            |   10  | 64  | 500  | 14  |   dide   |
 | wpia-malaria-orderly   |   2   | 64  | 1000 | 15  |   dide   |
 | wpia-orderly           |   4   | 32  | 500  | 16  |   dide   |
+| wpia-packit-dev        |   4   |  8  | 500  | 17  |   dide   |
 | reside-bk1             |   1   | 16  | 100  | 20  | 14.0.0.2 |
 | reside-bk2             |   1   | 16  | 100  | 21  | 14.0.0.3 |
 | reside-bk3             |   1   | 16  | 100  | 22  | 14.0.0.4 |
@@ -74,9 +75,9 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 
 |                      | Total     | VM allocated | Spare |
 |----------------------|-----------|--------------|-------|
-| Cores (logical)      |    96     | 77           | 19    |
-| RAM (Gb)             |  1024     | 690          | 206   |
-| DISK (D: SSD) (Tb)   |  11.6     | 8.1          | 3.5   |
+| Cores (logical)      |    96     | 81           | 15    |
+| RAM (Gb)             |  1024     | 698          | 198   |
+| DISK (D: SSD) (Tb)   |  11.6     | 8.6          | 3.0   |
 
 ## Retired VMs
 
@@ -158,34 +159,63 @@ and Hard-Drive. Edit button, Next, Expand, Next, choose the size.
 Next. Finish!
 
 ### For Ubuntu 20 and earlier:-
-* Restart the VM, and... `sudo growpart /dev/sda 3` followed by
-`sudo resize2fs /dev/sda3` will sort it out.
+* Restart the VM, and... 
+```
+sudo growpart /dev/sda 3
+sudo resize2fs /dev/sda3
+```
 
 ### For Ubuntu 22:-
 
-* Restart the VM.
-`df` and look for a line similar to
-```
-/dev/mapper/ubuntu--vg-ubuntu--lv  64704108 6700532  54684384  11% /
-```
+Ubuntu 22 changed something about logical volumes, and an extra
+step might be needed. 
 
-You can also, `sudo lsblk` to see that...
+* Restart the VM, then `sudo lsblk`.
+
+If you see something like this:
+
 ```
+sda                         8:0    0   500G  0 disk
+├─sda1                      8:1    0     1M  0 part
 ├─sda2                      8:2    0     2G  0 part /boot
-└─sda3                      8:3    0  1022G  0 part
+└─sda3                      8:3    0   126G  0 part
   └─ubuntu--vg-ubuntu--lv 253:0    0    63G  0 lvm  /
 ```
-... we have 1Tb of space, but the lvm partition is only 63Gb.
+
+then you first have to make `sda3` as big as `sda`. 
+
+``` 
+sudo growpart /dev/sda 3
+sudo lsblk
+```
+
+and hopefully you now see something like 
+
+```
+sda                         8:0    0   500G  0 disk
+├─sda1                      8:1    0     1M  0 part
+├─sda2                      8:2    0     2G  0 part /boot
+└─sda3                      8:3    0   498G  0 part
+  └─ubuntu--vg-ubuntu--lv 253:0    0    63G  0 lvm  /
+```
+
+Now, we need to make the ubuntu--vg as big as sda3. 
 
 ```
 sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
-resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+sudo lsblk
 ```
 
-and then `sudo lsblk` again will show the partition has grown.
+
+and hopefully the partition has now grown:-
+
 ```
-└─sda3                      8:3    0  1022G  0 part
-  └─ubuntu--vg-ubuntu--lv 253:0    0  1022G  0 lvm  /
+sda                         8:0    0   500G  0 disk
+├─sda1                      8:1    0     1M  0 part
+├─sda2                      8:2    0     2G  0 part /boot
+└─sda3                      8:3    0   498G  0 part
+  └─ubuntu--vg-ubuntu--lv 253:0    0   498G  0 lvm  /
 ```
 
 ## Diagnostics / Monitoring with a GUI

@@ -41,44 +41,45 @@ We will statically decide what the MAC addresses is for each virtual machine - a
 the MAC addresses will be in the form `00:15:5d:1a:84:xx`. IP address will either be
 local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those existing so far:-
 
-| Machine                | Cores | RAM | Disk | MAC |     IP   |
-|------------------------|-------|-----|------|-----|----------|
-| wpia-vault             |   1   | 4   |  50  | 01  |   dide   |
-| wpia-mint              |   2   | 16  | 500  | 02  |   dide   |
-| wpia-data              |   2   | 2   | 100  | 03  |   dide   |
-| wpia-bots              |   1   | 2   | 100  | 05  |   dide   |
-| wpia-mint-dev          |   2   | 16  | 500  | 06  |   dide   |
-| wpia-ncov-dev          |   10  | 64  | 1000 | 07  |   dide   |
-| wpia-covid19-forecasts |   6   | 32  | 1000 | 08  |   dide   |
-| wpia-comet             |   2   | 8   | 100  | 09  |   dide   |
-| wpia-wodin-dev         |   2   | 4   | 200  | 12  |   dide   |
-| wpia-epimodels         |   12  | 64  | 200  | 13  |   dide   |
-| wpia-beebop            |   10  | 64  | 500  | 14  |   dide   |
-| wpia-malaria-orderly   |   2   | 64  | 1000 | 15  |   dide   |
-| wpia-orderly           |   4   | 32  | 500  | 16  |   dide   |
-| wpia-packit-dev        |   4   |  8  | 500  | 17  |   dide   |
-| wpia-shiny-dev         |   4   |  8  | 500  | 18  |   dide   |
-| reside-bk1             |   1   | 16  | 100  | 20  | 14.0.0.2 |
-| reside-bk2             |   1   | 16  | 100  | 21  | 14.0.0.3 |
-| reside-bk3             |   1   | 16  | 100  | 22  | 14.0.0.4 |
-| reside-bk4             |   1   | 16  | 100  | 23  | 14.0.0.5 |
-| reside-bk5             |   1   | 16  | 100  | 24  | 14.0.0.6 |
-| reside-bk6             |   1   | 16  | 100  | 25  | 14.0.0.7 |
-| reside-bk7             |   1   | 16  | 100  | 26  | 14.0.0.8 |
-| reside-bk8             |   1   | 16  | 100  | 27  | 14.0.0.9 |
-| reside-deploy1         |   1   | 1   | 100  | 28  | 14.0.0.10|
-| reside-bk-browser-test1|   4   | 64  | 100  | 29  | 14.0.0.11|
-| reside-bk-multicore1   |   4   | 64  | 100  | 30  | 14.0.0.12|
-| reside-bk-multicore2   |   4   | 64  | 100  | 31  | 14.0.0.13|
-| reside-bk-multicore3   |   4   | 64  | 100  | 32  | 14.0.0.14|
+| Machine                | Cores | RAM | Disk | MAC | IP        |
+|------------------------|-------|-----|------|-----|-----------|
+| wpia-vault             |   1   | 4   |  50  | 01  | dide      |
+| wpia-mint              |   2   | 16  | 500  | 02  | dide      |
+| wpia-data              |   2   | 2   | 100  | 03  | dide      |
+| wpia-bots              |   1   | 2   | 100  | 05  | dide      |
+| wpia-mint-dev          |   2   | 16  | 500  | 06  | dide      |
+| wpia-ncov-dev          |   10  | 64  | 1000 | 07  | dide      |
+| wpia-covid19-forecasts |   6   | 32  | 1000 | 08  | dide      |
+| wpia-comet             |   2   | 8   | 100  | 09  | dide      |
+| wpia-wodin-dev         |   2   | 4   | 200  | 12  | dide      |
+| wpia-epimodels         |   12  | 64  | 200  | 13  | dide      |
+| wpia-beebop            |   10  | 64  | 500  | 14  | dide      |
+| wpia-malaria-orderly   |   2   | 64  | 1000 | 15  | dide      |
+| wpia-orderly           |   4   | 32  | 500  | 16  | dide      |
+| wpia-packit-dev        |   4   |  8  | 500  | 17  | dide      |
+| wpia-shiny-dev         |   4   |  8  | 500  | 18  | dide      |
+| reside-bk1             |   1   | 16  | 100  | 20  | 14.0.0.2  |
+| reside-bk2             |   1   | 16  | 100  | 21  | 14.0.0.3  |
+| reside-bk3             |   1   | 16  | 100  | 22  | 14.0.0.4  |
+| reside-bk4             |   1   | 16  | 100  | 23  | 14.0.0.5  |
+| reside-bk5             |   1   | 16  | 100  | 24  | 14.0.0.6  |
+| reside-bk6             |   1   | 16  | 100  | 25  | 14.0.0.7  |
+| reside-bk7             |   1   | 16  | 100  | 26  | 14.0.0.8  |
+| reside-bk8             |   1   | 16  | 100  | 27  | 14.0.0.9  |
+| reside-deploy1         |   1   | 1   | 100  | 28  | 14.0.0.10 |
+| reside-bk-browser-test1|   4   | 64  | 100  | 29  | 14.0.0.11 |
+| reside-bk-multicore1   |   4   | 64  | 100  | 30  | 14.0.0.12 |
+| reside-bk-multicore2   |   4   | 64  | 100  | 31  | 14.0.0.13 |
+| reside-bk-multicore3   |   4   | 64  | 100  | 32  | 14.0.0.14 |
+ | reside-privilege-walk |  2    | 32  | 100  | 33  | dide      |
 
 ## Usage of whole machine:
 
 |                      | Total     | VM allocated | Spare |
 |----------------------|-----------|--------------|-------|
-| Cores (logical)      |    96     | 85           | 11    |
-| RAM (Gb)             |  1024     | 706          | 190   |
-| DISK (D: SSD) (Tb)   |  11.6     | 9.1          | 2.5   |
+| Cores (logical)      |    96     | 87           | 9     |
+| RAM (Gb)             |  1024     | 738          | 159   |
+| DISK (D: SSD) (Tb)   |  11.6     | 9.2          | 2.4   |
 
 ## Retired VMs
 

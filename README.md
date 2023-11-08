@@ -78,7 +78,7 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 |                      | Total     | VM allocated | Spare |
 |----------------------|-----------|--------------|-------|
 | Cores (logical)      |    96     | 87           | 9     |
-| RAM (Gb)             |  1024     | 738          | 159   |
+| RAM (Gb)             |  1024     | 738          | 158   |
 | DISK (D: SSD) (Tb)   |  11.6     | 9.2          | 2.4   |
 
 ## Retired VMs

@@ -48,7 +48,7 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | wpia-data               |   2   | 2   | 100  | 03  | dide      |
 | wpia-bots               |   1   | 2   | 100  | 05  | dide      |
 | wpia-mint-dev           |   2   | 16  | 500  | 06  | dide      |
-| wpia-ncov-dev           |   10  | 64  | 1000 | 07  | dide      |
+| wpia-hermod-dev         |   2   | 16  | 200  | 07  | dide      |
 | wpia-covid19-forecasts  |   6   | 32  | 1000 | 08  | dide      |
 | wpia-comet              |   2   | 8   | 100  | 09  | dide      |
 | wpia-wodin-dev          |   2   | 4   | 200  | 12  | dide      |
@@ -71,22 +71,27 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | reside-bk-multicore1    |   4   | 64  | 100  | 30  | 14.0.0.12 |
 | reside-bk-multicore2    |   4   | 64  | 100  | 31  | 14.0.0.13 |
 | reside-bk-multicore3    |   4   | 64  | 100  | 32  | 14.0.0.14 |
-| reside-privilege-walk   |  2    | 32  | 100  | 33  | dide      |
+| reside-privilege-walk   |   2   | 32  | 100  | 33  | dide      |
+| wpia-hermod-1           |   4   | 16  | 200  | 34  | 14.0.0.21 |
+| wpia-hermod-2           |   4   | 16  | 200  | 35  | 14.0.0.22 |
 
 ## Usage of whole machine:
 
 |                      | Total     | VM allocated | Spare |
 |----------------------|-----------|--------------|-------|
 | Cores (logical)      |    96     | 87           | 9     |
-| RAM (Gb)             |  1024     | 738          | 158   |
-| DISK (D: SSD) (Tb)   |  11.6     | 9.2          | 2.4   |
+| RAM (Gb)             |  1024     | 722          | 174   |
+| DISK (D: SSD) (Tb)   |  11.6     | 8.8          | 2.8   |
 
 ## Retired VMs
 
 | Machine                | Cores | RAM | Disk | MAC |     IP   |
 |------------------------|-------|-----|------|-----|----------|
+| wpia-ncov-dev          |   10  | 64  | 1000 | 07  |   dide   |
 | wpia-monkeypox         |   4   | 64  | 200  | 11  |   dide   |
 | wpia-db-experiment     |   2   | 128 | 2000 | 10  |   dide   |
+
+
 
 
 Note:

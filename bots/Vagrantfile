@@ -1,6 +1,6 @@
 # -*- mode: ruby -*-
 
-box = "generic/ubuntu1804"
+box = "generic/ubuntu2204"
 ram = "2048"
 hostname = "wpia-bots"
 mac = "00:15:5d:1a:84:05"

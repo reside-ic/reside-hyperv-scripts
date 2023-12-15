@@ -51,9 +51,9 @@ Vagrant.configure(2) do |config|
       agent_config.vm.provision :shell, path: "./vm_scripts/setup.sh"
       agent_config.vm.provision :shell, path: "./vm_scripts/setup-agent.sh"
       agent_config.vm.provision :shell, path: "./vm_scripts/setup-docker.sh"
-      agent_config.vm.provision :shell, path: "./vm_scripts/setup-vault.sh"
+      agent_config.vm.provision :shell, path: "../common/setup-vault.sh"
       agent_config.vm.provision :shell, path: "./vm_scripts/setup-dependencies.sh"
-      agent_config.vm.provision :shell, path: "./vm_scripts/setup-pip.sh"
+      agent_config.vm.provision :shell, path: "../common/setup-pip.sh"
       agent_config.vm.provision :shell, path: "../common/start-prometheus-node-exporter.sh"
       agent_config.vm.provision :shell, path: "./vm_scripts/start-agent.sh", env: vault_config,
                                         args: agent[:queue]

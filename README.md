@@ -58,6 +58,7 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | wpia-wodin-dev          |   2   | 4   | 200  | 12  | dide      |
 | wpia-epimodels          |   12  | 64  | 200  | 13  | dide      |
 | wpia-beebop             |   10  | 64  | 500  | 14  | dide      |
+| wpia-beebop-dev         |   4   | 64  | 500  | 40  | dide      |
 | wpia-malaria-orderly    |   2   | 64  | 1000 | 15  | dide      |
 | wpia-orderly            |   4   | 32  | 500  | 16  | dide      |
 | wpia-packit-dev         |   4   |  8  | 500  | 17  | dide      |
@@ -83,9 +84,9 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 
 |                      | Total     | VM allocated | Spare |
 |----------------------|-----------|--------------|-------|
-| Cores (logical)      |    96     | 87           | 9     |
-| RAM (Gb)             |  1024     | 744          | 152   |
-| DISK (D: SSD) (Tb)   |  11.6     | 8.5          | 3.1   |
+| Cores (logical)      |    96     | 91           | 5     |
+| RAM (Gb)             |  1024     | 812          | 88    |
+| DISK (D: SSD) (Tb)   |  11.6     | 9.0          | 2.6   |
 
 ## Retired VMs
 

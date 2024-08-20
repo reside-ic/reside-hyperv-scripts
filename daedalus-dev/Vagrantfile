@@ -1,6 +1,6 @@
 # -*- mode: ruby -*-
 
-box = "generic/ubuntu2404"
+box = "generic/ubuntu2204"
 ram = "16384"
 hostname = "wpia-daedalus-dev"
 mac = "00:15:5d:1a:84:37"

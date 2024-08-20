@@ -61,6 +61,7 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | wpia-shiny-dev          |   4   |  8  | 500  | 18  | dide      |
 | wpia-shiny-dev-worker1  |   2   |  2  | 100  | 38  | dide      |
 | wpia-shiny-dev-worker2  |   2   |  2  | 100  | 39  | dide      |
+| wpia-daedalus-dev       |   2   | 16  | 500  | 37  | dide      |
 | reside-bk1              |   1   | 16  | 100  | 20  | 14.0.0.2  |
 | reside-bk2              |   1   | 16  | 100  | 21  | 14.0.0.3  |
 | reside-bk3              |   1   | 16  | 100  | 22  | 14.0.0.4  |
@@ -80,9 +81,9 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 
 |                      | Total     | VM allocated | Spare |
 |----------------------|-----------|--------------|-------|
-| Cores (logical)      |    96     | 85           | 11    |
-| RAM (Gb)             |  1024     | 754          | 126   |
-| DISK (D: SSD) (Tb)   |  11.6     | 8.7          | 2.9   |
+| Cores (logical)      |    96     | 87           | 9     |
+| RAM (Gb)             |  1024     | 770          | 110   |
+| DISK (D: SSD) (Tb)   |  11.6     | 9.2          | 2.4   |
 
 ## Retired VMs
 

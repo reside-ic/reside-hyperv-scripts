@@ -62,6 +62,7 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | wpia-shiny-dev-worker1  |   2   |  2  | 100  | 38  | dide      |
 | wpia-shiny-dev-worker2  |   2   |  2  | 100  | 39  | dide      |
 | wpia-daedalus-dev       |   2   | 16  | 500  | 37  | dide      |
+| wpia-daedalus           |   2   | 16  | 500  | 41  | dide      |
 | reside-bk1              |   1   | 16  | 100  | 20  | 14.0.0.2  |
 | reside-bk2              |   1   | 16  | 100  | 21  | 14.0.0.3  |
 | reside-bk3              |   1   | 16  | 100  | 22  | 14.0.0.4  |

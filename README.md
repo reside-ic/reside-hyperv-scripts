@@ -82,9 +82,9 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 
 |                      | Total     | VM allocated | Spare |
 |----------------------|-----------|--------------|-------|
-| Cores (logical)      |    96     | 87           | 9     |
-| RAM (Gb)             |  1024     | 770          | 110   |
-| DISK (D: SSD) (Tb)   |  11.6     | 9.2          | 2.4   |
+| Cores (logical)      |    96     | 89           | 7     |
+| RAM (Gb)             |  1024     | 786          | 94    |
+| DISK (D: SSD) (Tb)   |  11.6     | 9.7          | 1.9   |
 
 ## Retired VMs
 

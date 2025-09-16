@@ -57,9 +57,6 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | wpia-malaria-orderly    |   2   | 64  | 1000 | 15  | dide      |
 | wpia-packit-private     |   4   | 32  | 500  | 16  | dide      |
 | wpia-packit-dev         |   4   |  8  | 500  | 17  | dide      |
-| wpia-shiny-dev          |   4   |  8  | 500  | 18  | dide      |
-| wpia-shiny-dev-worker1  |   2   |  2  | 100  | 38  | dide      |
-| wpia-shiny-dev-worker2  |   2   |  2  | 100  | 39  | dide      |
 | wpia-daedalus-dev       |   2   | 16  | 500  | 37  | dide      |
 | wpia-daedalus           |   2   | 16  | 500  | 41  | dide      |
 | reside-bk1              |   1   | 16  | 100  | 20  | 14.0.0.2  |
@@ -81,9 +78,9 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 
 |                      | Total     | VM allocated | Spare |
 |----------------------|-----------|--------------|-------|
-| Cores (logical)      |    96     | 87           | 9     |
-| RAM (Gb)             |  1024     | 778          | 102   |
-| DISK (D: SSD) (Tb)   |  11.6     | 9.6          | 2.0   |
+| Cores (logical)      |    96     | 79           | 17    |
+| RAM (Gb)             |  1024     | 766          | 114   |
+| DISK (D: SSD) (Tb)   |  11.6     | 8.9          | 2.7   |
 
 Note:
 

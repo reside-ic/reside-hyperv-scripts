@@ -72,14 +72,13 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | reside-bk-multicore1    |   4   | 64  | 100  | 30  | 14.0.0.12 |
 | reside-bk-multicore2    |   4   | 64  | 100  | 31  | 14.0.0.13 |
 | reside-bk-multicore3    |   4   | 64  | 100  | 32  | 14.0.0.14 |
-| reside-privilege-walk   |  2    | 32  | 100  | 33  | dide      |
 
 ## Usage of whole machine:
 
 |                      | Total     | VM allocated | Spare |
 |----------------------|-----------|--------------|-------|
-| Cores (logical)      |    96     | 79           | 17    |
-| RAM (Gb)             |  1024     | 766          | 114   |
+| Cores (logical)      |    96     | 77           | 19    |
+| RAM (Gb)             |  1024     | 734          | 146   |
 | DISK (D: SSD) (Tb)   |  11.6     | 8.9          | 2.7   |
 
 Note:

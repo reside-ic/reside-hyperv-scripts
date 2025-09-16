@@ -50,7 +50,6 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 |                         |       |     |      | 36  | 14.0.0.36 |
 | wpia-mint-dev           |   2   | 16  | 500  | 06  | dide      |
 | wpia-covid19-forecasts  |   6   | 32  | 1000 | 08  | dide      |
-| wpia-comet              |   2   | 8   | 100  | 09  | dide      |
 | wpia-wodin-dev          |   2   | 4   | 200  | 12  | dide      |
 | wpia-epimodels          |   12  | 64  | 200  | 13  | dide      |
 | wpia-beebop             |   10  | 64  | 500  | 14  | dide      |
@@ -82,23 +81,9 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 
 |                      | Total     | VM allocated | Spare |
 |----------------------|-----------|--------------|-------|
-| Cores (logical)      |    96     | 89           | 7     |
-| RAM (Gb)             |  1024     | 786          | 94    |
-| DISK (D: SSD) (Tb)   |  11.6     | 9.7          | 1.9   |
-
-## Retired VMs
-
-| Machine                | Cores | RAM | Disk | MAC |     IP    |
-|------------------------|-------|-----|------|-----|-----------|
-| wpia-monkeypox         |   4   | 64  | 200  | 11  |   dide    |
-| wpia-db-experiment     |   2   | 128 | 2000 | 10  |   dide    |
-| wpia-ncov-dev          |   10  | 64  | 1000 | 07  |   dide    |
-| wpia-hermod-dev        |   2   | 16  | 100  | 07  |   dide    |
-|                        |       |     |      | 37  | 14.0.0.20 |
-| wpia-hermod-1          |   2   | 16  | 100  | 34  | 14.0.0.21 |
-| wpia-hermod-2          |   2   | 16  | 100  | 35  | 14.0.0.22 |
-
-
+| Cores (logical)      |    96     | 87           | 9     |
+| RAM (Gb)             |  1024     | 778          | 102   |
+| DISK (D: SSD) (Tb)   |  11.6     | 9.6          | 2.0   |
 
 Note:
 

@@ -58,7 +58,7 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | wpia-packit-private     |   4   | 32  | 500  | 16  | dide      |
 | wpia-packit-dev         |   4   |  8  | 500  | 17  | dide      |
 | wpia-daedalus-dev       |   2   | 16  | 500  | 37  | dide      |
-| wpia-daedalus           |   2   | 16  | 500  | 41  | dide      |
+| wpia-daedalus           |   8   | 32  | 500  | 41  | dide      |
 | reside-bk1              |   1   | 16  | 100  | 20  | 14.0.0.2  |
 | reside-bk2              |   1   | 16  | 100  | 21  | 14.0.0.3  |
 | reside-bk3              |   1   | 16  | 100  | 22  | 14.0.0.4  |
@@ -67,7 +67,6 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | reside-bk6              |   1   | 16  | 100  | 25  | 14.0.0.7  |
 | reside-bk7              |   1   | 16  | 100  | 26  | 14.0.0.8  |
 | reside-bk8              |   1   | 16  | 100  | 27  | 14.0.0.9  |
-| reside-deploy1          |   1   | 1   | 100  | 28  | 14.0.0.10 |
 | reside-bk-browser-test1 |   4   | 64  | 100  | 29  | 14.0.0.11 |
 | reside-bk-multicore1    |   4   | 64  | 100  | 30  | 14.0.0.12 |
 | reside-bk-multicore2    |   4   | 64  | 100  | 31  | 14.0.0.13 |
@@ -77,9 +76,9 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 
 |                      | Total     | VM allocated | Spare |
 |----------------------|-----------|--------------|-------|
-| Cores (logical)      |    96     | 77           | 19    |
-| RAM (Gb)             |  1024     | 734          | 146   |
-| DISK (D: SSD) (Tb)   |  11.6     | 8.9          | 2.7   |
+| Cores (logical)      |    96     | 82           | 14    |
+| RAM (Gb)             |  1024     | 749          | 131   |
+| DISK (D: SSD) (Tb)   |  11.6     | 8.8          | 2.8   |
 
 Note:
 

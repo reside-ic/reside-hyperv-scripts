@@ -1,10 +1,10 @@
 # -*- mode: ruby -*-
 
 box = "generic/ubuntu2204"
-ram = "16384"
+ram = "32768"
 hostname = "wpia-daedalus"
 mac = "00:15:5d:1a:84:41"
-cpus = 2
+cpus = 8
 
 Vagrant.configure(2) do |config|
   config.vm.box = box
@@ -14,7 +14,7 @@ Vagrant.configure(2) do |config|
     hyperv.vmname = hostname
     hyperv.cpus = cpus
     hyperv.maxmemory = ram
-    hyperv.memory = "1024"
+    hyperv.memory = ram
     hyperv.auto_start_action = "StartIfRunning"
     hyperv.auto_stop_action = "Save"
   end
@@ -25,5 +25,5 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision :shell, path: "../common/setup-docker.sh"
   config.vm.provision :shell, path: "../common/setup-ssh-keys.sh", run: "always",
-                              args: ["richfitz", "weshinsley", "EmmaLRussell", "david-mears-2"]
+                              args: ["weshinsley", "EmmaLRussell", "david-mears-2"]
 end

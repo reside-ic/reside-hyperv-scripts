@@ -44,7 +44,7 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 | Machine                 | Cores | RAM | Disk | MAC | IP        |
 |-------------------------|-------|-----|------|-----|-----------|
 | wpia-vault              |   1   | 4   |  50  | 01  | dide      |
-| wpia-mint               |   2   | 16  | 500  | 02  | dide      |
+| wpia-mint               |   8   | 16  | 500  | 02  | dide      |
 | wpia-data               |   2   | 2   | 100  | 03  | dide      |
 | wpia-bots               |   1   | 2   | 100  | 05  | dide      |
 |                         |       |     |      | 36  | 14.0.0.36 |
@@ -76,7 +76,7 @@ local, with `14.0.0.1` as the gateway, or a DIDE assigned IP address. Those exis
 
 |                      | Total     | VM allocated | Spare |
 |----------------------|-----------|--------------|-------|
-| Cores (logical)      |    96     | 82           | 14    |
+| Cores (logical)      |    96     | 88           | 8     |
 | RAM (Gb)             |  1024     | 749          | 131   |
 | DISK (D: SSD) (Tb)   |  11.6     | 8.8          | 2.8   |
 
